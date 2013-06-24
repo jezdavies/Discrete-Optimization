@@ -1,0 +1,8 @@
+
+public class KnapsackItem {
+	private Item item;
+	private boolean included;
+	
+	public KnapsackItem(Item itemIn, included)
+
+}

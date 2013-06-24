@@ -9,7 +9,7 @@ public class SolveProblem {
 	 */
 	public static void main(String[] args)
 	{
-		OptimumKnapsackSolver solver = new OptimumKnapsackSolver();
+		KnapsackSolver solver = new DynamicProgrammingKnapsackSolver();
 		//create a list of items to use
 		List<Item> items = new ArrayList<Item>();
 		items.add(new Item(1,16,2));
