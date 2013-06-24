@@ -73,14 +73,16 @@ public class Solver {
         items = Integer.parseInt(firstLine[0]);
         capacity = Integer.parseInt(firstLine[1]);
 
-
+        int[] values = new int[items];
+        int[] weights = new int[items];
 
         for(int i=1; i < items+1; i++){
           String line = lines.get(i);
           String[] parts = line.split("\\s+");
 
           itemList.add(new Item(i, Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));
-
+//          values[i-1] = Integer.parseInt(parts[0]);
+//          weights[i-1] = Integer.parseInt(parts[1]);
         }
     }
     
@@ -96,10 +98,11 @@ public class Solver {
         System.out.println(knapsack.getValue() +" 0");
         for(Item i : itemList){
         	if(knapsack.containsItem(i)){
-        		System.out.print("1 ");
+        		System.out.println("1 ");
         	}else{
-        		System.out.print("0 ");
+        		System.out.println("0 ");
         	}
-        }      
+        }
+        System.out.println("");        
     }
 }
