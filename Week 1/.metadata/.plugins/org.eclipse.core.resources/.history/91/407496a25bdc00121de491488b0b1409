@@ -1,0 +1,13 @@
+
+public class SolveProblem {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		OptimumKnapsackSolver solver = new OptimumKnapsackSolver();
+		
+
+	}
+
+}

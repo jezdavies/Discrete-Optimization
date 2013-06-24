@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Solver {
+	
+	private List<Item> items;
+	private int capacity;
+	private int numberOfItems;
+	private int answers[][];
+	public Solver()
+	{
+		
+	}
+	
+	Knapsack solve(int capacityIn, int numberOfItemsIn, ArrayList<Item> itemsIn){
+		//store the parameters so they can be used throughout
+		capacity = capacityIn;
+		numberOfItems = numberOfItemsIn;
+		items = itemsIn;
+		
+		//create the table of answers
+		CreateTable();
+		
+		//return the Knapsack with the optimum contents
+		return getOptimumSack();
+		
+	}
+
+
+
+	private void CreateTable() {
+		//create a 2d array to hold the table of answers for numberOfItems vs capacity
+		answers = new int[numberOfItems][capacity];
+		//now iterate through each column and row to fill in the best possible value
+		
+		for(int k=0; k<= capacity; k++){
+			for(int j = 0; j <= numberOfItems; j++){
+				
+			}
+			
+		}
+		
+		
+	}
+	
+	
+	private Knapsack getOptimumSack() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

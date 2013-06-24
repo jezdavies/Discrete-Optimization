@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Knapsack {
+	private int capacity;
+	private List<Item> items;
+	
+	public Knapsack(){
+		items = new ArrayList<Item>();
+	}
+	public int getValue(){
+		//TODO write getValue method
+	}
+}

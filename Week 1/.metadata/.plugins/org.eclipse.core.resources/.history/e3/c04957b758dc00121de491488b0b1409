@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Knapsack {
+	private int capacity;
+	private List<Item> items;
+	
+	public Knapsack(){
+		items = new ArrayList<Item>();
+	}
+	public int getValue(){
+		int value = 0;
+		for(Item i : items)
+		{
+			value += i.getValue();
+		}
+		return value;
+	}
+	
+	public int getWeight(){
+		int weight = 0;
+		for(Item i : items)
+		{
+			weight += i.getWeight();
+		}
+		return weight;
+	}
+	
+	public void addItem(Item itemIn) throws Exception
+	{
+		if(getWeight() + itemIn.getWeight() < capacity){
+			items.add(itemIn);
+		}
+		else{
+			throw new Exception("Knapsack Capacity Exceeded");
+		}
+	}
+}

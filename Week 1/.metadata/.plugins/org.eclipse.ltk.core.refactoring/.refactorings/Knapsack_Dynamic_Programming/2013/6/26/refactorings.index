@@ -1,0 +1,7 @@
+1372023495679	Encapsulate field 'value'
+1372023509619	Encapsulate field 'weight'
+1372023614528	Encapsulate field 'itemNumber'
+1372023902126	Rename local variable 'value'
+1372027481841	Rename type 'Solver'
+1372027692242	Rename method 'CreateTable'
+1372027709339	Rename method 'CreateTableOfAnswers'

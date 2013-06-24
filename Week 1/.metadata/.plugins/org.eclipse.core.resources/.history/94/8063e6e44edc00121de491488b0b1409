@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Solver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		
+	}
+	
+	Knapsack solve(float capacity, int items, ArrayList<Item> items){
+		
+	}
+
+}

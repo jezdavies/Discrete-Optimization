@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Solver {
+	
+	private List<Item> items;
+	private float capacity;
+	private int numberOfItems;
+	
+	public Solver()
+	{
+		
+	}
+	
+	Knapsack solve(float capacityIn, int numberOfItemsIn, ArrayList<Item> itemsIn){
+		//store the parameters so they can be used throughout
+		capacity = capacityIn;
+		numberOfItems = numberOfItemsIn;
+		items = itemsIn;
+		
+		//create the table of answers
+		CreateTable()
+		
+		//return the Knapsack with the optimum contents
+		return getOptimumSack();
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+
+public class Item {
+	private int itemNumber;
+	private float value;
+	private float weight;
+	public Item(int itemNumber_in,float value_in,float weight_in){
+		itemNumber = itemNumber_in;
+		value = value_in;
+		weight = weight_in;
+	}
+}

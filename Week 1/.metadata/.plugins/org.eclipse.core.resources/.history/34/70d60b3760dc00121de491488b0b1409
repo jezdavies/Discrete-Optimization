@@ -1,0 +1,113 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class OptimumKnapsackSolver
+{
+	
+	private List<Item> items;
+	private int capacity;
+	private int numberOfItems;
+	private int answers[][];
+
+	
+	Knapsack solve(int capacityIn, int numberOfItemsIn, List<Item> itemsIn) throws Exception
+	{
+		//store the parameters so they can be used throughout
+		capacity = capacityIn;
+		numberOfItems = numberOfItemsIn;
+		items = itemsIn;
+		
+		//create the table of answers
+		createTableOfAnswers();
+		
+		//return the Knapsack with the optimum contents
+		return getOptimumSack();
+		
+	}
+
+
+
+	private void createTableOfAnswers()
+	{
+		//create a 2d array to hold the table of best possible values (v) for every combination of numberOfItems (j) and capacity(k)
+		answers = new int[numberOfItems + 1][capacity + 1];
+		
+		//if j is 0 then v will be 0 for all values of k as we can't select any items to add value
+		for(int k = 0; k < capacity; k++)
+		{
+			answers[0][k] = 0;
+		}
+		
+		//now populate the rest of the table by iterating through each column(j) and then each row for that column(k) and calculating v
+		for(int j = 1; j < numberOfItems; j++)
+		{
+			for(int k=0; k< capacity; k++)
+			{
+				
+				//check to see if the item that corresponds to j can be added (i.e. it's weight is less than the capacity of the sack)
+				//N.B. because the items list is zero indexed then to get the item corresponding to j we need to ask for j-1
+				if(items.get(j-1).getWeight() <= k)
+				{
+					
+					//it can be added so we need to decide whether to take it or not
+					int valueWithNewItem = items.get(j-1).getValue() + answers[j-1][k-items.get(j-1).getWeight()];
+					int valueWithoutNewItem = answers[j-1][k];
+					if(valueWithNewItem > valueWithoutNewItem)
+					{
+						//it's better to take the new item so set the value to this
+						answers[j][k] = valueWithNewItem;
+					}
+					else
+					{
+						answers[j][k] = valueWithoutNewItem;					
+					}		
+				}
+				else
+				{
+					//it can't be added so set the value to that for the previous number of items
+					answers[j][k] = answers [j-1][k];
+				}
+					
+			}
+			
+		}
+		
+		
+	}
+	
+	
+	private Knapsack getOptimumSack() throws Exception
+	{
+		Knapsack sack = new Knapsack();
+		
+		//work out which items we took		
+		int j = numberOfItems;
+		int k = capacity;
+		
+		while((j > 0) & (k > 0))
+		{
+			if(answers[j][k] != answers[j-1][k])
+			{
+				//we took item j so add it to the knapsack
+				sack.addItem(items.get(j-1));
+				j -= 1;
+				k -= items.get(j-1).getWeight();
+			}
+			else
+			{
+				//we didn't take the item so move to the previous column but keep the same row
+				j -= 1;				
+			}
+				
+		}
+		return sack;
+	}
+}

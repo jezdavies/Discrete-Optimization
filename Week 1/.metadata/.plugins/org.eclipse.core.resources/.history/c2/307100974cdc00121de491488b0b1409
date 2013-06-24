@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Knapsack {
+	private int capacity;
+	private Item[] items;
+	public int getValue(){
+		//TODO write getValue method
+	}
+}

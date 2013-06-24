@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Knapsack {
+	private int capacity;
+	private List<Item> items;
+	
+	public Knapsack(){
+		items = new ArrayList<Item>();
+	}
+	public float getValue(){
+		float value = 0;
+		for(Item i : items)
+		{
+			value += i.getValue();
+		}
+		return value;
+	}
+	
+	public float getWeight(){
+		float weight = 0;
+		for(Item i : items)
+		{
+			weight += i.getValue();
+		}
+		return weight;
+	}
+	
+	public void addItem(Item itemIn)
+	{
+		
+	}
+}

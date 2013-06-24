@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Solver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		
+	}
+	
+	Knapsack solve(float capacity, int numberOfItems, ArrayList<Item> items){
+		Knapsack sack = new Knapsack();
+		return sack;
+		
+	}
+
+}

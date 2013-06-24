@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Solver {
+	
+	private List<Item> items;
+	private float capacity;
+	private int numberOfItems;
+	
+	public Solver()
+	{
+		
+	}
+	
+	Knapsack solve(float capacity, int numberOfItems, ArrayList<Item> items){
+		
+		CreateTable(capacity, numberOfItems)
+		
+		Knapsack sack = new Knapsack();
+		return sack;
+		
+	}
+
+}
