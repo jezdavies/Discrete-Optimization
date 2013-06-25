@@ -9,7 +9,6 @@ public abstract class KnapsackSolver {
 
 	protected int capacity;
 	protected int numberOfItems;
-	
 	public KnapsackSolver() {
 		super();
 	}

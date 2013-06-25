@@ -8,8 +8,7 @@ public abstract class KnapsackSolver {
 			throws Exception;
 
 	protected int capacity;
-	protected int numberOfItems;
-	
+
 	public KnapsackSolver() {
 		super();
 	}

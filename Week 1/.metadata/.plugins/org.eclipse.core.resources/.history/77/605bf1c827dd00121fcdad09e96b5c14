@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
-
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * The class <code>Solver</code> is an implementation of a greedy algorithm to solve the knapsack problem.
