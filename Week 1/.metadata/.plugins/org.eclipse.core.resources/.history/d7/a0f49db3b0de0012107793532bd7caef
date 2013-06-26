@@ -53,19 +53,15 @@ public class Node {
 	}
 	
 	public void addItem(Item item){
-		itemIDs.add(item.getItemNumber());
+		items.add(item);
 		value += item.getValue();
 		weight += item.getWeight();
 		room -= item.getWeight();
 	}
 	
-/*	public Item getLastItem()
+	public Item getLastItem()
 	{
 		return getItems().get(getItems().size() -1);
-	}*/
-	public Integer getLastItemID()
-	{
-		return getItemIDs().get(getItemIDs().size() -1);
 	}
 
 	public int getItemIndex() {
@@ -77,18 +73,12 @@ public class Node {
 	}
 	
 	
-/*	public List<Item> getItems() {
+	public List<Item> getItems() {
 		return items;
-	}*/
-	public List<Integer> getItemIDs() {
-		return itemIDs;
 	}
 
-/*	public void setItems(List<Item> items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
-	}*/
-	public void setItemIDs(List<Integer> itemIDsIn) {
-		this.itemIDs = itemIDsIn;
 	}
 
 

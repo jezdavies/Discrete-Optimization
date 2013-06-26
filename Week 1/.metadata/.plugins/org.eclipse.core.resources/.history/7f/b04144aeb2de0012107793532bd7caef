@@ -54,7 +54,6 @@ public class Solver {
         	//TODO remove hardcoded file to be used if no parameter passed
         	fileName = "./data/ks_19_0";
         }
-        //System.out.println("************FILENAME: " + fileName + " ******************");
 
         // read the lines out of the file
         List<String> lines = new ArrayList<String>();
@@ -88,11 +87,11 @@ public class Solver {
     private void solve() throws Exception{
     	//decide which algorithm we want to use to solve this based on the complexity of the problem
     	int complexity = capacity * items;
-    	//if(complexity > 1212055200){
+    	if(complexity > 1212055200){
     		solver = new BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver();
-    	//} else {
-    	//	solver = new DynamicProgrammingKnapsackSolver();
-    	//}
+    	} else {
+    		solver = new DynamicProgrammingKnapsackSolver();
+    	}
 
     	
     	knapsack = solver.solve(items, capacity, itemList);        

@@ -59,13 +59,9 @@ public class Node {
 		room -= item.getWeight();
 	}
 	
-/*	public Item getLastItem()
+	public Item getLastItem()
 	{
 		return getItems().get(getItems().size() -1);
-	}*/
-	public Integer getLastItemID()
-	{
-		return getItemIDs().get(getItemIDs().size() -1);
 	}
 
 	public int getItemIndex() {
@@ -87,7 +83,7 @@ public class Node {
 /*	public void setItems(List<Item> items) {
 		this.items = items;
 	}*/
-	public void setItemIDs(List<Integer> itemIDsIn) {
+	public void setItems(List<Integer> itemIDsIn) {
 		this.itemIDs = itemIDsIn;
 	}
 

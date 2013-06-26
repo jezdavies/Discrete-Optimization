@@ -176,21 +176,15 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 	}
 	
 	private Knapsack createKnapsackFromNode(Node solutionNode) throws Exception {
-		//sort the items back into ascending order by ItemNumber and then get the actual item objects into the Knapsack
+		//sort the items back into descending order by ItemNumber
 //		List<Item> solutionItems = solutionNode.getItems();
 		List<Integer> solutionItemIDs = solutionNode.getItemIDs();
 		List<Item> solutionItemObjects = new ArrayList<Item>();
 		Collections.sort(solutionItemIDs);
-		Collections.sort(items, Item.ascendingItemNumberItemComparator);
-		for(Item i:items){
-			if(solutionItemIDs.contains(i.getItemNumber())){
-				solutionItemObjects.add(i);
-			}
-				
-		}
-		Knapsack sack = new Knapsack(capacity, solutionItemObjects, solutionNode.getWeight(), solutionNode.getValue());
-		//System.out.println("Solution Knapsack details:");
-		//System.out.println(sack.toString());
+		Collections.sort(items, Item.ascendingItemNumberItemComparator)
+		Knapsack sack = new Knapsack(capacity, solutionItems, solutionNode.getWeight(), solutionNode.getValue());
+		System.out.println("Solution Knapsack details:");
+		System.out.println(sack.toString());
 		return sack;
 	}
 

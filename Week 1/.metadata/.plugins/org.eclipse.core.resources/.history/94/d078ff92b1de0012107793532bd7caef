@@ -159,38 +159,23 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 	private void createNegativeNode(Node currentNode, int nextItemIndex,
 			Item nextItem) {
 		//now create the node that represents if we don't take the next item
-		/*Node negativeNode = new Node(currentNode.getValue(), 
+		Node negativeNode = new Node(currentNode.getValue(), 
 									 currentNode.getRoom(), 
 									 currentNode.getWeight(),
 									 0, 
 									 nextItemIndex, 
-									 new ArrayList<Item>(currentNode.getItems()));*/
-		Node negativeNode = new Node(currentNode.getValue(), 
-				 currentNode.getRoom(), 
-				 currentNode.getWeight(),
-				 0, 
-				 nextItemIndex, 
-				 new ArrayList<Integer>(currentNode.getItemIDs()));
+									 new ArrayList<Item>(currentNode.getItems()));
 		negativeNode.setEstimate(calculateOptimisticEvaluation(negativeNode));
 		processNode(negativeNode);
 	}
 	
 	private Knapsack createKnapsackFromNode(Node solutionNode) throws Exception {
-		//sort the items back into ascending order by ItemNumber and then get the actual item objects into the Knapsack
-//		List<Item> solutionItems = solutionNode.getItems();
-		List<Integer> solutionItemIDs = solutionNode.getItemIDs();
-		List<Item> solutionItemObjects = new ArrayList<Item>();
-		Collections.sort(solutionItemIDs);
-		Collections.sort(items, Item.ascendingItemNumberItemComparator);
-		for(Item i:items){
-			if(solutionItemIDs.contains(i.getItemNumber())){
-				solutionItemObjects.add(i);
-			}
-				
-		}
-		Knapsack sack = new Knapsack(capacity, solutionItemObjects, solutionNode.getWeight(), solutionNode.getValue());
-		//System.out.println("Solution Knapsack details:");
-		//System.out.println(sack.toString());
+		//sort the items back into descending order by ItemNumber
+		List<Item> solutionItems = solutionNode.getItems();
+		Collections.sort(solutionItems,  Item.ascendingItemNumberItemComparator);
+		Knapsack sack = new Knapsack(capacity, solutionItems, solutionNode.getWeight(), solutionNode.getValue());
+		System.out.println("Solution Knapsack details:");
+		System.out.println(sack.toString());
 		return sack;
 	}
 

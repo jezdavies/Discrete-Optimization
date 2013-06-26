@@ -54,7 +54,7 @@ public class Solver {
         	//TODO remove hardcoded file to be used if no parameter passed
         	fileName = "./data/ks_19_0";
         }
-        //System.out.println("************FILENAME: " + fileName + " ******************");
+        System.out.println("************FILENAME: " + fileName + " ******************");
 
         // read the lines out of the file
         List<String> lines = new ArrayList<String>();
