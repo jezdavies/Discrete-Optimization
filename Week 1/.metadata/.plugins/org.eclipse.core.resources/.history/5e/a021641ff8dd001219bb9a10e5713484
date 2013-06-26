@@ -49,12 +49,9 @@ public class Solver {
                 fileName = arg.substring(6);
             } 
         }
-        if(fileName == null){
-            //return;
-        	//TODO remove hardcoded file to be used
-        	fileName = "./data/ks_4_0";
-        }
-
+        if(fileName == null)
+            return;
+        
         // read the lines out of the file
         List<String> lines = new ArrayList<String>();
 

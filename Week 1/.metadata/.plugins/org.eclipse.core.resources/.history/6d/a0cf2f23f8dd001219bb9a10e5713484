@@ -52,7 +52,7 @@ public class Solver {
         if(fileName == null){
             //return;
         	//TODO remove hardcoded file to be used
-        	fileName = "./data/ks_4_0";
+        	fileName == "./Data/ks_4_0";
         }
 
         // read the lines out of the file
