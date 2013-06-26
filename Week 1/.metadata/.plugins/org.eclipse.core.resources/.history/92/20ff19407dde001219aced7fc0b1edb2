@@ -75,6 +75,8 @@ public class Solver {
         items = Integer.parseInt(firstLine[0]);
         capacity = Integer.parseInt(firstLine[1]);
 
+
+
         for(int i=1; i < items+1; i++){
           String line = lines.get(i);
           String[] parts = line.split("\\s+");
