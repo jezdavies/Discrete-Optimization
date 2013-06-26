@@ -96,7 +96,7 @@ public class BranchAndBoundKnapsackSolver extends KnapsackSolver {
 			
 			
 		}
-		return evaluation;
+		return (int)evaluation;
 	}
 
 	private void processNode(Node currentNode){

@@ -46,7 +46,7 @@ public class BranchAndBoundKnapsackSolver extends KnapsackSolver {
 		//create a root node
 		Node rootNode = new Node(0, capacity, 0, 0, new ArrayList<Item>());
 		//calculate the root node optimistic evaluation
-		double rootOptimisticEvaluation = calculateOptimisticEvaluation(rootNode);
+		int rootOptimisticEvaluation = calculateOptimisticEvaluation(rootNode);
 		rootNode.setEstimate(rootOptimisticEvaluation);
 		
 		
@@ -59,7 +59,7 @@ public class BranchAndBoundKnapsackSolver extends KnapsackSolver {
 	
 
 
-	private double calculateOptimisticEvaluation(Node currentNode) {
+	private int calculateOptimisticEvaluation(Node currentNode) {
 		// TODO create sensible implementation of calculating rootOptimisticEvaluation based upon relaxation of ability to take only part of an item
 		double evaluation = 0;
 		//first work out what the weight and value of the sack are so far
@@ -96,7 +96,7 @@ public class BranchAndBoundKnapsackSolver extends KnapsackSolver {
 			
 			
 		}
-		return evaluation;
+		return (int)evaluation;
 	}
 
 	private void processNode(Node currentNode){

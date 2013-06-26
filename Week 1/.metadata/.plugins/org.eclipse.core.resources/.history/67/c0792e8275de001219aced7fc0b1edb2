@@ -4,7 +4,7 @@ import java.util.List;
 public class Node {
 	private int value;
 	private int room;
-	private double estimate;
+	private int estimate;
 	private List<Item> items;
 	private boolean active;
 	private int itemIndex;
@@ -26,11 +26,11 @@ public class Node {
 		this.room = room;
 	}
 
-	public double getEstimate() {
+	public int getEstimate() {
 		return estimate;
 	}
 
-	public void setEstimate(double estimate) {
+	public void setEstimate(int estimate) {
 		this.estimate = estimate;
 	}
 
@@ -80,8 +80,8 @@ public class Node {
 
 	public static Comparator<Node> descendingEstimateNodeComparator = new Comparator<Node>(){
 		public int compare(Node node1, Node node2){
-			Double node1Estimate = new Double(node1.getEstimate());
-			Double node2Estimate = new Double(node2.getEstimate());
+			Integer node1Estimate = new Integer(node1.getEstimate());
+			Integer node2Estimate = new Integer(node2.getEstimate());
 			
 			//use descending order
 			return node2Estimate.compareTo(node1Estimate);
