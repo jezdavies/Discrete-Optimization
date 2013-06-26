@@ -5,7 +5,7 @@ public class Node {
 	private int value;
 	private int room;
 	private int estimate;
-	private List<Integer> itemIDs;
+	private List<Item> items;
 	private boolean active;
 	private int itemIndex;
 	
@@ -42,22 +42,22 @@ public class Node {
 		this.active = active;
 	}
 	
-	public Node(int valueIn, int roomIn, int estimateIn, int itemIndexIn, List<Integer>itemIDsIn){
+	public Node(int valueIn, int roomIn, int estimateIn, int itemIndexIn, List<Item>itemsIn){
 		setValue(valueIn);
 		setRoom(roomIn);
 		setEstimate(estimateIn);
 		setItemIndex(itemIndexIn);
-		setItemIDs(itemIDsIn);
+		setItems(itemsIn);
 		setActive(true);
 	}
 	
-	public void addItem(int itemID){
-		getItemIDs().add(new Integer(itemID));
+	public void addItem(Item item){
+		items.add(item);
 	}
 	
-	public int getLastItemID()
+	public Item getLastItem()
 	{
-		return getItemIDs().get(getItemIDs().size() -1);
+		return getItems().get(getItems().size() -1);
 	}
 
 	public int getItemIndex() {
@@ -67,16 +67,17 @@ public class Node {
 	public void setItemIndex(int itemIndex) {
 		this.itemIndex = itemIndex;
 	}
-
-	public List<Integer> getItemIDs() {
-		return itemIDs;
-	}
-
-	public void setItemIDs(List<Integer> itemIDs) {
-		this.itemIDs = itemIDs;
-	}
 	
 	
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
+
 	public static Comparator<Node> descendingEstimateNodeComparator = new Comparator<Node>(){
 		public int compare(Node node1, Node node2){
 			Integer node1Estimate = new Integer(node1.getEstimate());
