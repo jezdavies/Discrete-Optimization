@@ -19,7 +19,7 @@ public class Knapsack
 	public Knapsack(int capacityIn)
 	{
 		capacity = capacityIn;
-		items = new ArrayList<Item>();
+		items = new ArrayList<Item>());
 	}
 	
 	public Knapsack(int capacityIn, List<Item> itemsIn, int weightIn, int valueIn){

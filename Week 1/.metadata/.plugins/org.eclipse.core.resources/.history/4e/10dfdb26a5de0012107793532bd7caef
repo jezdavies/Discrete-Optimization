@@ -45,7 +45,7 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 		Collections.sort(items, Item.descendingRatioItemComparator);
 		
 		//create a root node
-		Node rootNode = new Node(0, capacity, 0, 0, 0, new ArrayList<Item>());
+		Node rootNode = new Node(0, capacity, 0, 0, new ArrayList<Item>());
 		//calculate the root node optimistic evaluation
 		double rootOptimisticEvaluation = calculateOptimisticEvaluation(rootNode);
 		rootNode.setEstimate(rootOptimisticEvaluation);
@@ -93,15 +93,21 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 	private double calculateOptimisticEvaluation(Node currentNode) {
 		// TODO create sensible implementation of calculating rootOptimisticEvaluation based upon relaxation of ability to take only part of an item
 		double evaluation = 0;
-
+		//first work out what the weight and value of the sack are so far
+		int totalWeight = 0;
+		int totalValue = 0;
+		for(Item i:currentNode.getItems()){
+			totalWeight += i.getWeight();
+			totalValue += i.getValue();
+		}
 		//initialise the total value so far as the evaluation.  We'll then see what else we can possibly add to increase this from the remaining items.
-		evaluation += currentNode.getValue();
+		evaluation += totalValue;
 		//initialise remaining capacity to the sack capacity minus the total weight so far
-		int remainingCapacity = currentNode.getRoom();
+		int remainingCapacity = capacity - totalWeight;
 		
 		for(int i = currentNode.getItemIndex(); i<items.size(); i++){
 			//check to see if we've any capacity left to add another item
-			if(remainingCapacity == 0){
+			if(capacity == 0){
 				break;
 			}
 			Item nextItem = items.get(i);
@@ -110,16 +116,13 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 			if(nextItem.getWeight() > capacity){
 				continue;
 			}
-			//check if we can fit this item completely into the sack
 			if(remainingCapacity>=nextItem.getWeight()){
-				//we can so add it's value and remove the weight from the remaining capacity
 				evaluation += nextItem.getValue();
 				remainingCapacity -= nextItem.getWeight();
-			} else {
-				//we can only partially fit it in so calculate what proportion we can fit in and add the appropriate amount of value
+			}
+			else{
 				evaluation += ((double)remainingCapacity / nextItem.getWeight()) * nextItem.getValue();
 				remainingCapacity = 0;
-				break;
 			}
 			
 			
@@ -140,7 +143,6 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 			//now create the node that represents if we take the next item
 			Node positiveNode = new Node(currentNode.getValue() + nextItem.getValue(),
 										 currentNode.getRoom() - nextItem.getWeight(),
-										 currentNode.getWeight() + nextItem.getWeight(),
 										 0, 
 										 nextItemIndex, 
 										 newItemsList);
@@ -156,7 +158,6 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 		//now create the node that represents if we don't take the next item
 		Node negativeNode = new Node(currentNode.getValue(), 
 									 currentNode.getRoom(), 
-									 currentNode.getWeight(),
 									 0, 
 									 nextItemIndex, 
 									 new ArrayList<Item>(currentNode.getItems()));
@@ -165,10 +166,11 @@ public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implement
 	}
 	
 	private Knapsack createKnapsackFromNode(Node solutionNode) throws Exception {
+		Knapsack sack = new Knapsack(capacity);
 		//sort the items back into descending order by ItemNumber
 		List<Item> solutionItems = solutionNode.getItems();
 		Collections.sort(solutionItems,  Item.ascendingItemNumberItemComparator);
-		Knapsack sack = new Knapsack(capacity, solutionItems, solutionNode.getWeight(), solutionNode.getValue());
+		sack.setItems(solutionItems);
 		System.out.println("Solution Knapsack details:");
 		System.out.println(sack.toString());
 		return sack;

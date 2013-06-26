@@ -19,14 +19,7 @@ public class Knapsack
 	public Knapsack(int capacityIn)
 	{
 		capacity = capacityIn;
-		items = new ArrayList<Item>();
-	}
-	
-	public Knapsack(int capacityIn, List<Item> itemsIn, int weightIn, int valueIn){
-		capacity = capacityIn;
-		items = itemsIn;
-		weight = weightIn;
-		value = valueIn;
+		setItems(new ArrayList<Item>());
 	}
 	public int getValue(){
 
@@ -43,7 +36,7 @@ public class Knapsack
 		int weightWithNewItem = getWeight() + itemIn.getWeight();
 		if(weightWithNewItem <= capacity)
 		{
-			items.add(itemIn);
+			getItems().add(itemIn);
 			weight = weightWithNewItem;
 			value += itemIn.getValue();
 		}
@@ -60,7 +53,7 @@ public class Knapsack
 		output += "Weight = " + getWeight() + "\n";
 		output += "Value = " + getValue() + "\n";
 		output += "Knapsack Contents:\n";
-		for(Item i : items)
+		for(Item i : getItems())
 		{
 			output += i.toString() + "\n";
 		}
@@ -71,7 +64,7 @@ public class Knapsack
 	
 
 	public boolean containsItem(Item item) {
-		return items.contains(item);
+		return getItems().contains(item);
 	}
 
 }

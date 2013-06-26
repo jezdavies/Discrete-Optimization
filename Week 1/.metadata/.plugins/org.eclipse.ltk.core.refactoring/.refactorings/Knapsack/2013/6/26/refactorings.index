@@ -24,3 +24,4 @@
 1372253869416	Encapsulate field 'items'
 1372254323342	Encapsulate field 'items'
 1372279003843	Rename type 'BranchAndBoundKnapsackSolver'
+1372284452856	Encapsulate field 'weight'

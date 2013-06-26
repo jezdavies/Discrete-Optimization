@@ -45,9 +45,7 @@ public class Node {
 	
 	public void addItem(Item item){
 		items.add(item);
-		value += item.getValue();
-		weight += item.getWeight();
-		room -= item.getWeight();
+		value += item.get();
 	}
 	
 	public Item getLastItem()
@@ -70,15 +68,6 @@ public class Node {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
-	}
-
-
-	public int getWeight() {
-		return weight;
-	}
-
-	public void setWeight(int weight) {
-		this.weight = weight;
 	}
 
 
