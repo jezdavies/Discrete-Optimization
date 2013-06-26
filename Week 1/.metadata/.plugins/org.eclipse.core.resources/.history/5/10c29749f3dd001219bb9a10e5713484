@@ -1,0 +1,67 @@
+import java.util.Comparator;
+
+
+public class Item
+{
+	
+	private int itemNumber;
+	private int value;
+	private int weight;
+	
+	public int getItemNumber()
+	{
+		return itemNumber;
+	}
+	public int getValue()
+	{
+		return value;
+	}
+
+	public int getWeight()
+	{
+		return weight;
+	}
+	
+	public float getValueWeightRatio()
+	{
+		return value/weight;
+	}
+
+	
+	public Item(int itemNumber_in,int value_in,int weight_in)
+	{
+		itemNumber = itemNumber_in;
+		value = value_in;
+		weight = weight_in;
+	}
+	
+	public String toString()
+	{
+		String output = "Item Details:\n";
+		output += "itemNumber = " + itemNumber + "\n";
+		output += "value = " + value + "\n";
+		output += "weight = " + weight + "\n";
+		output += "--End item details--";
+		return output;
+	}
+	
+	public static Comparator<Item> descendingRatioItemComparator = new Comparator<Item>(){
+		public int compare(Item item1, Item item2){
+			Float item1Ratio = new Float(item1.getValueWeightRatio());
+			Float item2Ratio = new Float(item2.getValueWeightRatio());
+			//use descending order
+			return item2Ratio.compareTo(item1Ratio);
+		}
+	};
+	
+	public static Comparator<Item> ascendingItemNumberItemComparator = new Comparator<Item>(){
+		public int compare(Item item1, Item item2){
+			Integer item1ItemNumber = new Integer(item1.getItemNumber());
+			Integer item2ItemNumber = new Integer(item2.getItemNumber());
+			//use dascending order
+			return item1ItemNumber.compareTo(item2ItemNumber);
+		}
+	};
+
+
+}

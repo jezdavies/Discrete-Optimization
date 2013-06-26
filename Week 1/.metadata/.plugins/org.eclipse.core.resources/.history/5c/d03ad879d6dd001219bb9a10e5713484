@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Node {
+	private int value;
+	private int room;
+	private int estimate;
+	private List<Integer> itemIDs;
+	private boolean active;
+	
+	public Node(int initialValue, int initialRoom, int initialEstimate){
+		value = initialValue;
+		room = initialRoom;
+		estimate = initialEstimate;
+		itemIDs = new ArrayList<Integer>();
+		active = true;
+	}
+	
+
+}

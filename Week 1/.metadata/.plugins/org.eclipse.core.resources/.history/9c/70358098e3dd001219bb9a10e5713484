@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Node {
+	private int value;
+	private int room;
+	private int estimate;
+	private List<Integer> itemIDs;
+	private boolean active;
+	private int itemIndex;
+	
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public int getRoom() {
+		return room;
+	}
+
+	public void setRoom(int room) {
+		this.room = room;
+	}
+
+	public int getEstimate() {
+		return estimate;
+	}
+
+	public void setEstimate(int estimate) {
+		this.estimate = estimate;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	public Node(int initialValue, int initialRoom, int initialEstimate, int itemIndexIn){
+		setValue(initialValue);
+		setRoom(initialRoom);
+		setEstimate(initialEstimate);
+		setItemIndex(itemIndexIn);
+		itemIDs = new ArrayList<Integer>();
+		setActive(true);
+	}
+	
+	public void addItem(int itemID){
+		itemIDs.add(new Integer(itemID));
+	}
+	
+	public int getLastItemID()
+	{
+		return itemIDs.get(itemIDs.size() -1);
+	}
+
+	public int getItemIndex() {
+		return itemIndex;
+	}
+
+	public void setItemIndex(int itemIndex) {
+		this.itemIndex = itemIndex;
+	}
+
+}

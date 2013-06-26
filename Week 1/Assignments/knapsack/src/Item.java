@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 
 public class Item
 {
@@ -19,8 +21,12 @@ public class Item
 	{
 		return weight;
 	}
-
 	
+	public float getValueWeightRatio()
+	{
+		return value/weight;
+	}
+
 	public Item(int itemNumber_in,int value_in,int weight_in)
 	{
 		itemNumber = itemNumber_in;
@@ -37,5 +43,24 @@ public class Item
 		output += "--End item details--";
 		return output;
 	}
+	
+	public static Comparator<Item> descendingRatioItemComparator = new Comparator<Item>(){
+		public int compare(Item item1, Item item2){
+			Float item1Ratio = new Float(item1.getValueWeightRatio());
+			Float item2Ratio = new Float(item2.getValueWeightRatio());
+			//use descending order
+			return item2Ratio.compareTo(item1Ratio);
+		}
+	};
+	
+	public static Comparator<Item> ascendingItemNumberItemComparator = new Comparator<Item>(){
+		public int compare(Item item1, Item item2){
+			Integer itemID1 = new Integer(item1.getItemNumber());
+			Integer itemID2 = new Integer(item2.getItemNumber());
+			//use ascending order
+			return itemID1.compareTo(itemID2);
+		}
+	};
+
 
 }

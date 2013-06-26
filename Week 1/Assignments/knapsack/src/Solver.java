@@ -84,8 +84,9 @@ public class Solver {
     }
     
     private void solve() throws Exception{
-    	
-    	solver = new DynamicProgrammingKnapsackSolver();
+    	//TODO implement logic to decide which algorithm to use
+    	//solver = new DynamicProgrammingKnapsackSolver();
+    	solver = new BranchAndBoundKnapsackSolver();
     	knapsack = solver.solve(items, capacity, itemList);        
     }
     

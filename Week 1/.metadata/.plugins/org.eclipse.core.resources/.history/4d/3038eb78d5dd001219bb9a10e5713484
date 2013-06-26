@@ -1,0 +1,10 @@
+import java.util.List;
+
+public class Node {
+	private int value;
+	private int room;
+	private int estimate;
+	private List<int> items;
+	
+
+}

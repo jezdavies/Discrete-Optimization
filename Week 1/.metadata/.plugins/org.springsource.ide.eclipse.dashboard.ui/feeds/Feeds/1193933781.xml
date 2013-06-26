@@ -113,7 +113,7 @@
 		<guid isPermaLink="false">http://blog.springsource.org/?p=13321</guid>
 		<description><![CDATA[WeÕre pleased to announce that, after a long period of internal incubation, weÕre releasing a foundational framework for asynchronous applications on the JVM which weÕre calling Reactor. It provides abstractions for Java, Groovy and other JVM languages to make building event and data-driven applications easier. ItÕs also really fast. On modest hardware, it&#039;s possible to  <a href="http://blog.springsource.org/2013/05/13/reactor-a-foundation-for-asynchronous-applications-on-the-jvm/"><em>Read more...</em></a>]]></description>
 		<wfw:commentRss>http://blog.springsource.org/2013/05/13/reactor-a-foundation-for-asynchronous-applications-on-the-jvm/feed/</wfw:commentRss>
-		<slash:comments>34</slash:comments>
+		<slash:comments>35</slash:comments>
 		</item>
 		<item>
 		<title>Content Negotiation using Spring MVC</title>
@@ -127,7 +127,7 @@
 		<guid isPermaLink="false">http://blog.springsource.org/?p=13194</guid>
 		<description><![CDATA[There are two ways to generate output using Spring MVC: You can use the RESTful @ResponseBody approach and HTTP message converters, typically to return data-formats like JSON or XML. Programmatic clients, mobile apps and AJAX enabled browsers are the usual clients. Alternatively you may use view resolution. Although views are perfectly capable of generating JSON  <a href="http://blog.springsource.org/2013/05/11/content-negotiation-using-spring-mvc/"><em>Read more...</em></a>]]></description>
 		<wfw:commentRss>http://blog.springsource.org/2013/05/11/content-negotiation-using-spring-mvc/feed/</wfw:commentRss>
-		<slash:comments>20</slash:comments>
+		<slash:comments>21</slash:comments>
 		</item>
 		<item>
 		<title>Spring Data Arora SR1 released</title>
