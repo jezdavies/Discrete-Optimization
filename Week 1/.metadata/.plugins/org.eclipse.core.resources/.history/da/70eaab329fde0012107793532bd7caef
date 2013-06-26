@@ -6,6 +6,7 @@ public class Node {
 	private int room;
 	private double estimate;
 	private List<Item> items;
+	private boolean active;
 	private int itemIndex;
 	
 
@@ -32,6 +33,14 @@ public class Node {
 	public void setEstimate(double estimate) {
 		this.estimate = estimate;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
 	public Node(int valueIn, int roomIn, int estimateIn, int itemIndexIn, List<Item>itemsIn){
 		setValue(valueIn);
@@ -39,6 +48,7 @@ public class Node {
 		setEstimate(estimateIn);
 		setItemIndex(itemIndexIn);
 		setItems(itemsIn);
+		setActive(true);
 	}
 	
 	public void addItem(Item item){

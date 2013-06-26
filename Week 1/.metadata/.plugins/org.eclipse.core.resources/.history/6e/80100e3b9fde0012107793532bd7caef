@@ -39,6 +39,7 @@ public class Node {
 		setEstimate(estimateIn);
 		setItemIndex(itemIndexIn);
 		setItems(itemsIn);
+		setActive(true);
 	}
 	
 	public void addItem(Item item){

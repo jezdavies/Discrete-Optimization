@@ -13,8 +13,6 @@ public class Knapsack
 {
 	private int capacity;
 	private List<Item> items;
-	private int weight;
-	private int value;
 	
 	public Knapsack(int capacityIn)
 	{
@@ -22,12 +20,21 @@ public class Knapsack
 		setItems(new ArrayList<Item>());
 	}
 	public int getValue(){
-
+		int value = 0;
+		for(Item i : getItems())
+		{
+			value += i.getValue();
+		}
 		return value;
 	}
 	
 	public int getWeight()
 	{
+		int weight = 0;
+		for(Item i : getItems())
+		{
+			weight += i.getWeight();
+		}
 		return weight;
 	}
 	
@@ -37,8 +44,6 @@ public class Knapsack
 		if(weightWithNewItem <= capacity)
 		{
 			getItems().add(itemIn);
-			weight = weightWithNewItem;
-			value += itemIn.getValue();
 		}
 		else
 		{

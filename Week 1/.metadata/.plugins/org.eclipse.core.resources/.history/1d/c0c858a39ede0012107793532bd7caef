@@ -37,8 +37,6 @@ public class Knapsack
 		if(weightWithNewItem <= capacity)
 		{
 			getItems().add(itemIn);
-			weight = weightWithNewItem;
-			value += itemIn.getValue();
 		}
 		else
 		{

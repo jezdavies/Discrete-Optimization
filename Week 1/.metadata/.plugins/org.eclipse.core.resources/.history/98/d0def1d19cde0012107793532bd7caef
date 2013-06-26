@@ -51,7 +51,7 @@ public class Solver {
         }
         if(fileName == null){
             //return;
-        	//TODO remove hardcoded file to be used if no parameter passed
+        	//TODO remove hardcoded file to be used
         	fileName = "./data/ks_4_0";
         }
 
@@ -88,7 +88,7 @@ public class Solver {
     	//decide which algorithm we want to use to solve this based on the complexity of the problem
     	int complexity = capacity * items;
     	if(complexity > 1212055200){
-    		solver = new BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver();
+    		solver = new BranchAndBoundKnapsackSolver();
     	} else {
     		solver = new DynamicProgrammingKnapsackSolver();
     	}
