@@ -9,16 +9,14 @@ import java.util.List;
  * @author jez.davies
  *
  */
-public class DynamicProgrammingKnapsackSolver implements KnapsackSolver
+public class DynamicProgrammingKnapsackSolver extends KnapsackSolver
 {
 	
 	private int answers[][];
-	private int capacity;
-	private int numberOfItems;
-	private List<Item> items;
+
 	
-	
-	public Knapsack solve(int numberOfItemsIn, int capacityIn,List<Item> itemsIn) throws Exception
+	@Override
+	protected Knapsack solve(int numberOfItemsIn, int capacityIn,List<Item> itemsIn) throws Exception
 	{
 		//store the parameters so they can be used throughout
 		capacity = capacityIn;

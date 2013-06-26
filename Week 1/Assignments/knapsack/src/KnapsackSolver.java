@@ -1,17 +1,9 @@
 import java.util.List;
 
-public abstract class KnapsackSolver {
+public interface KnapsackSolver {
 
-	protected List<Item> items;
-
-	protected abstract Knapsack solve(int numberOfItemsIn, int capacityIn, List<Item> itemsIn)
-			throws Exception;
-
-	protected int capacity;
-	protected int numberOfItems;
 	
-	public KnapsackSolver() {
-		super();
-	}
+	Knapsack solve(int numberOfItemsIn, int capacityIn, List<Item> itemsIn)
+			throws Exception;
 
 }

@@ -10,19 +10,18 @@ import java.util.List;
  * @author jez.davies
  *
  */
-public class BranchAndBoundKnapsackSolver implements KnapsackSolver {
+public class BranchAndBoundKnapsackSolver extends KnapsackSolver {
 
 	private List<Item> items;
 	//private TreeSet<Node> nodes;
 	private Node solutionNode; //node that will be used to store the best current solution node
-	private int capacity;
-	private int numberOfItems;
+
 	
 	/* (non-Javadoc)
 	 * @see KnapsackSolver#solve(int, int, java.util.List)
 	 */
-	
-	public Knapsack solve(int numberOfItemsIn, int capacityIn,
+	@Override
+	protected Knapsack solve(int numberOfItemsIn, int capacityIn,
 			List<Item> itemsIn) throws Exception {
 
 		//store the parameters so they can be used throughout

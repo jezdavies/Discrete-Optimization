@@ -21,8 +21,8 @@ public class BranchAndBoundKnapsackSolver implements KnapsackSolver {
 	/* (non-Javadoc)
 	 * @see KnapsackSolver#solve(int, int, java.util.List)
 	 */
-	
-	public Knapsack solve(int numberOfItemsIn, int capacityIn,
+	@Override
+	protected Knapsack solve(int numberOfItemsIn, int capacityIn,
 			List<Item> itemsIn) throws Exception {
 
 		//store the parameters so they can be used throughout
