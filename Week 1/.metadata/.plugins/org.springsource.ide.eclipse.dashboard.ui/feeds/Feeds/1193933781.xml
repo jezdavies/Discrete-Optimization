@@ -67,7 +67,7 @@
 		<guid isPermaLink="false">http://blog.springsource.org/?p=13104</guid>
 		<description><![CDATA[In my previous post I introduced the concept of content negotiation and the three strategies Spring MVC uses to determine the content requested. In this post I want to extend the concept to supporting multiple views for different content-types using the ContentNegotiatingViewResolver (or CNVR). Quick Overview Since we already know how to setup content-negotiation from  <a href="http://blog.springsource.org/2013/06/03/content-negotiation-using-views/"><em>Read more...</em></a>]]></description>
 		<wfw:commentRss>http://blog.springsource.org/2013/06/03/content-negotiation-using-views/feed/</wfw:commentRss>
-		<slash:comments>9</slash:comments>
+		<slash:comments>10</slash:comments>
 		</item>
 		<item>
 		<title>Spring Framework 4.0 M1: WebSocket Support</title>
@@ -113,7 +113,7 @@
 		<guid isPermaLink="false">http://blog.springsource.org/?p=13321</guid>
 		<description><![CDATA[WeÕre pleased to announce that, after a long period of internal incubation, weÕre releasing a foundational framework for asynchronous applications on the JVM which weÕre calling Reactor. It provides abstractions for Java, Groovy and other JVM languages to make building event and data-driven applications easier. ItÕs also really fast. On modest hardware, it&#039;s possible to  <a href="http://blog.springsource.org/2013/05/13/reactor-a-foundation-for-asynchronous-applications-on-the-jvm/"><em>Read more...</em></a>]]></description>
 		<wfw:commentRss>http://blog.springsource.org/2013/05/13/reactor-a-foundation-for-asynchronous-applications-on-the-jvm/feed/</wfw:commentRss>
-		<slash:comments>35</slash:comments>
+		<slash:comments>36</slash:comments>
 		</item>
 		<item>
 		<title>Content Negotiation using Spring MVC</title>

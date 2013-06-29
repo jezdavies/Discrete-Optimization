@@ -1,0 +1,50 @@
+import java.util.Collections;
+import java.util.List;
+
+
+public class GreedyKnapsackSOlver implements KnapsackSolver {
+
+	private List<Item> items;
+	//private TreeSet<Node> nodes;
+	private Node solutionNode; //node that will be used to store the best current solution node
+	private int capacity;
+	private int numberOfItems;
+	
+	/* (non-Javadoc)
+	 * @see KnapsackSolver#solve(int, int, java.util.List)
+	 */
+	
+	public Knapsack solve(int numberOfItemsIn, int capacityIn,
+			List<Item> itemsIn) throws Exception {
+
+		//store the parameters so they can be used throughout
+		capacity = capacityIn;
+		numberOfItems = numberOfItemsIn;
+		items = itemsIn;
+		
+		//create the TreeSet that will hold our solution nodes - pass it a comparator
+		//nodes = new TreeSet<Node>(Node.descendingEstimateNodeComparator);
+
+		
+		//return the Knapsack with the optimum contents
+		return getOptimumSack();
+		
+	}
+	
+	private Knapsack getOptimumSack() throws Exception
+	{
+		//sort the items by their value/weight ratio
+		Collections.sort(items, Item.descendingRatioItemComparator);
+		//now just loop through the items and keep putting them in while you can
+		int remainingCapactiy = capacity;
+		Knapsack sack = new Knapsack(capacity);
+		for(Item i: items){
+			if(i.getWeight() <= remainingCapactiy){
+				sack.addItem(i);
+			}
+			
+		}
+		return sack;
+	}
+
+}

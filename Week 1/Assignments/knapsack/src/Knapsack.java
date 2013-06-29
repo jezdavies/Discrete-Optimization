@@ -73,5 +73,26 @@ public class Knapsack
 	public boolean containsItem(Item item) {
 		return items.contains(item);
 	}
+	
+	public void replaceItemList(List<Item> newItems) throws Exception{
+		
+		int newWeight = 0;
+		int newValue = 0;
+		//now we need to calculate our weight and value
+		for(Item i:newItems)
+		{
+			newWeight += i.getWeight();
+			newValue += i.getValue();
+		}
+		if(newWeight <= capacity){
+			items = newItems;
+			value = newValue;
+			weight = newWeight;
+		}
+		else{
+			throw new Exception("Tried to replace item list with list that exceeds Knapsack capacity");
+		}
+		
+	}
 
 }

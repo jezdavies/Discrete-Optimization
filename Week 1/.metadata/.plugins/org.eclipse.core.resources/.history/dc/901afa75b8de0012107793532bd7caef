@@ -1,0 +1,197 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver implements KnapsackSolver {
+
+	private List<Item> items;
+	//private TreeSet<Node> nodes;
+	private Node solutionNode; //node that will be used to store the best current solution node
+	private int capacity;
+	private int numberOfItems;
+	
+	/* (non-Javadoc)
+	 * @see KnapsackSolver#solve(int, int, java.util.List)
+	 */
+	
+	public Knapsack solve(int numberOfItemsIn, int capacityIn,
+			List<Item> itemsIn) throws Exception {
+
+		//store the parameters so they can be used throughout
+		capacity = capacityIn;
+		numberOfItems = numberOfItemsIn;
+		items = itemsIn;
+		
+		//create the TreeSet that will hold our solution nodes - pass it a comparator
+		//nodes = new TreeSet<Node>(Node.descendingEstimateNodeComparator);
+
+		
+		//return the Knapsack with the optimum contents
+		return getOptimumSack();
+		
+	}
+	
+	private Knapsack getOptimumSack() throws Exception
+	{
+		//sort the items by their value/weight ratio
+		Collections.sort(items, Item.descendingRatioItemComparator);
+		
+		//create a root node
+//		Node rootNode = new Node(0, capacity, 0, 0, 0, new ArrayList<Item>());
+		Node rootNode = new Node(0, capacity, 0, 0, 0, new ArrayList<Integer>());
+
+		//calculate the root node optimistic evaluation
+		double rootOptimisticEvaluation = calculateOptimisticEvaluation(rootNode);
+		rootNode.setEstimate(rootOptimisticEvaluation);
+		
+		
+		//now recursively process the node and all it's possible children
+		processNode(rootNode);
+
+		//we now have the best node so create the corresponding knapsack
+		return createKnapsackFromNode(solutionNode);
+	}
+	
+
+
+
+
+	private void processNode(Node currentNode){
+		
+		//check if it's worth processing this node (i.e. we don't have a solution node yet
+		// or the current node's estimate greater than or equal to the actual value of the current best solution node)
+		
+		if((solutionNode == null) || (currentNode.getEstimate() >= solutionNode.getValue())){
+			//it's worth processing
+			//check to see if this Node is the node for the final item in the list
+			if(currentNode.getItemIndex() <(items.size() -1)){
+				//it's not the last item in the list so let's create the child nodes to represent taking or not taking the next item
+				//get the item that is next in the list
+				int nextItemIndex = currentNode.getItemIndex()+1;
+				Item nextItem = items.get(nextItemIndex);
+				//create the child nodes for this node
+				createPositiveNode(currentNode, nextItemIndex, nextItem);
+				createNegativeNode(currentNode, nextItemIndex, nextItem);
+			} else{
+				//it is the last item in the list so add this node to the list of solution nodes if it's better than the current solution node
+				if((solutionNode == null) || (currentNode.getValue() > solutionNode.getValue())){
+					solutionNode = currentNode;
+				}
+				
+			}
+		
+		}
+		
+	}
+
+	private double calculateOptimisticEvaluation(Node currentNode) {
+		// TODO create sensible implementation of calculating rootOptimisticEvaluation based upon relaxation of ability to take only part of an item
+		double evaluation = 0;
+
+		//initialise the total value so far as the evaluation.  We'll then see what else we can possibly add to increase this from the remaining items.
+		evaluation += currentNode.getValue();
+		//initialise remaining capacity to the sack capacity minus the total weight so far
+		int remainingCapacity = currentNode.getRoom();
+		
+		for(int i = currentNode.getItemIndex(); i<items.size(); i++){
+			//check to see if we've any capacity left to add another item
+			if(remainingCapacity == 0){
+				break;
+			}
+			Item nextItem = items.get(i);
+			//check to see whether the item we're looking at could have fitted in our knapsack even if it was empty 
+			// - if it couldn't then exclude it as it will adversely impact the optimistic evaluation
+			/*if(nextItem.getWeight() > capacity){
+				continue;
+			}*/
+			//check if we can fit this item completely into the sack
+			if(remainingCapacity>=nextItem.getWeight()){
+				//we can so add it's value and remove the weight from the remaining capacity
+				evaluation += nextItem.getValue();
+				remainingCapacity -= nextItem.getWeight();
+			} else {
+				//we can only partially fit it in so calculate what proportion we can fit in and add the appropriate amount of value
+				evaluation += ((double)remainingCapacity / nextItem.getWeight()) * nextItem.getValue();
+				remainingCapacity = 0;
+				break;
+			}
+			
+			
+		}
+		return evaluation*1.1;
+	}
+
+	private void createPositiveNode(Node currentNode, int nextItemIndex,
+			Item nextItem) {
+		//check whether taking the next item would exceed the capacity - if it would then don't create the node and process it
+		if((currentNode.getRoom() - nextItem.getWeight()) >= 0)
+		{
+			//we have room for the next item so create a node to represent doing this
+			//create the list of itemIDs that includes taking the next item
+//			List<Item> newItemsList = new ArrayList<Item>(currentNode.getItems());
+			List<Integer> newItemsList = new ArrayList<Integer>(currentNode.getItemIDs());
+
+//			newItemsList.add(nextItem);
+			newItemsList.add(nextItem.getItemNumber());
+			
+			//now create the node that represents if we take the next item
+			Node positiveNode = new Node(currentNode.getValue() + nextItem.getValue(),
+										 currentNode.getRoom() - nextItem.getWeight(),
+										 currentNode.getWeight() + nextItem.getWeight(),
+										 0, 
+										 nextItemIndex, 
+										 newItemsList);
+			positiveNode.setEstimate(calculateOptimisticEvaluation(positiveNode));
+			//now process the node
+			processNode(positiveNode);
+		}		
+
+	}
+	
+	private void createNegativeNode(Node currentNode, int nextItemIndex,
+			Item nextItem) {
+		//now create the node that represents if we don't take the next item
+		/*Node negativeNode = new Node(currentNode.getValue(), 
+									 currentNode.getRoom(), 
+									 currentNode.getWeight(),
+									 0, 
+									 nextItemIndex, 
+									 new ArrayList<Item>(currentNode.getItems()));*/
+		Node negativeNode = new Node(currentNode.getValue(), 
+				 currentNode.getRoom(), 
+				 currentNode.getWeight(),
+				 0, 
+				 nextItemIndex, 
+				 new ArrayList<Integer>(currentNode.getItemIDs()));
+		negativeNode.setEstimate(calculateOptimisticEvaluation(negativeNode));
+		processNode(negativeNode);
+	}
+	
+	private Knapsack createKnapsackFromNode(Node solutionNode) throws Exception {
+		//sort the items back into ascending order by ItemNumber and then get the actual item objects into the Knapsack
+//		List<Item> solutionItems = solutionNode.getItems();
+		List<Integer> solutionItemIDs = solutionNode.getItemIDs();
+		List<Item> solutionItemObjects = new ArrayList<Item>();
+		Collections.sort(solutionItemIDs);
+		Collections.sort(items, Item.ascendingItemNumberItemComparator);
+		for(Item i:items){
+			if(solutionItemIDs.contains(i.getItemNumber())){
+				solutionItemObjects.add(i);
+			}
+				
+		}
+		Knapsack sack = new Knapsack(capacity, solutionItemObjects, solutionNode.getWeight(), solutionNode.getValue());
+		//System.out.println("Solution Knapsack details:");
+		//System.out.println(sack.toString());
+		return sack;
+	}
+
+}

@@ -25,3 +25,5 @@
 1372254323342	Encapsulate field 'items'
 1372279003843	Rename type 'BranchAndBoundKnapsackSolver'
 1372284452856	Encapsulate field 'weight'
+1372292325886	Rename local variable 'currentNode'
+1372418328328	Rename type 'GreedyKnapsackSOlver'

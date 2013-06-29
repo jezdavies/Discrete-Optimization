@@ -86,16 +86,24 @@ public class Solver {
     }
     
     private void solve() throws Exception{
-    	//decide which algorithm we want to use to solve this based on the complexity of the problem
-    	int complexity = capacity * items;
-    	//if(complexity > 1212055200){
-    		solver = new BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver();
-    	//} else {
-    	//	solver = new DynamicProgrammingKnapsackSolver();
-    	//}
-
     	
-    	knapsack = solver.solve(items, capacity, itemList);        
+    	/*solver = new GreedyKnapsackSolver();
+    	knapsack = solver.solve(items, capacity, itemList);*/
+    	
+    	
+    	//we have three algorithms but not all may work due to memory constraints, so let's try the best first
+    	//DynamicProgramming guarantees us the optimum result but can be very memory hungry
+    	
+    	solver = new DynamicProgrammingKnapsackSolver();
+    	knapsack = solver.solve(items, capacity, itemList);  
+
+/*    	solver = new BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver();
+    	knapsack = solver.solve(items, capacity, itemList);  
+*/
+/*    	solver = new GreedyKnapsackSolver();
+    	knapsack = solver.solve(items, capacity, itemList);  
+*/
+    	 
     }
     
     private void writeOutput(){

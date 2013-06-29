@@ -51,6 +51,13 @@ public class Item
 			Double item2Ratio = new Double(item2.getValueWeightRatio());
 			//use descending order
 			int compareResult = item2Ratio.compareTo(item1Ratio);
+			//if they have the same ratio then let's put the lightest item first
+			if(compareResult == 0)
+			{
+				Integer item1Weight = item1.weight;
+				Integer item2Weight = item2.weight;
+				compareResult = item2Weight.compareTo(item1Weight);
+			}
 			return compareResult;
 		}
 	};

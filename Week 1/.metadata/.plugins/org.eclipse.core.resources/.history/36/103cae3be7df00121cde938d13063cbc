@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ */
+
+/**
+ * @author jez.davies
+ *
+ */
+public class Knapsack
+{
+	private int capacity;
+	private List<Item> items;
+	private int weight;
+	private int value;
+	
+	public Knapsack(int capacityIn)
+	{
+		capacity = capacityIn;
+		items = new ArrayList<Item>();
+	}
+	
+	public Knapsack(int capacityIn, List<Item> itemsIn, int weightIn, int valueIn){
+		capacity = capacityIn;
+		items = itemsIn;
+		weight = weightIn;
+		value = valueIn;
+	}
+	public int getValue(){
+
+		return value;
+	}
+	
+	public int getWeight()
+	{
+		return weight;
+	}
+	
+	public void addItem(Item itemIn) throws Exception
+	{
+		int weightWithNewItem = getWeight() + itemIn.getWeight();
+		if(weightWithNewItem <= capacity)
+		{
+			items.add(itemIn);
+			weight = weightWithNewItem;
+			value += itemIn.getValue();
+		}
+		else
+		{
+			throw new Exception("Tried to add item to Knapsack that would exceed capacity.\nKnapsack Capacity = " + capacity + "\nCurrent Knapsack Weight = " + getWeight() + "\nNew Item Weight = " + itemIn.getWeight());
+		}
+	}
+	
+	public String toString()
+	{
+		String output = "Knapsack details:\n";
+		output += "Capacity = " + capacity + "\n";
+		output += "Weight = " + getWeight() + "\n";
+		output += "Value = " + getValue() + "\n";
+		output += "Knapsack Contents:\n";
+		for(Item i : items)
+		{
+			output += i.toString() + "\n";
+		}
+		output += "--End--\n";
+		return output;
+		
+	}
+	
+
+	public boolean containsItem(Item item) {
+		return items.contains(item);
+	}
+	
+	public void replaceItemList(List<Item> newItems){
+		items = newItems;
+	}
+
+}
