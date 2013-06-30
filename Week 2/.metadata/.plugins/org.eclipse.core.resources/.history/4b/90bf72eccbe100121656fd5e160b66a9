@@ -1,0 +1,19 @@
+
+public class Edge {
+	private int startNode;
+	private int endNode;
+	
+	public Edge(int startIn, int endIn){
+		startNode = startIn;
+		endNode = endIn;
+	}
+
+	public int getStartNode() {
+		return startNode;
+	}
+
+	public int getEndNode() {
+		return endNode;
+	}
+
+}

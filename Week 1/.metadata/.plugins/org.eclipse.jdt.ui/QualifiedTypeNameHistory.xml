@@ -8,7 +8,10 @@
 <fullyQualifiedTypeName name="Knapsack"/>
 <fullyQualifiedTypeName name="Item"/>
 <fullyQualifiedTypeName name="Node"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.xml.crypto.NodeSetData"/>
 <fullyQualifiedTypeName name="BranchAndBoundKnapsackSolver"/>
+<fullyQualifiedTypeName name="DynamicProgrammingKnapsackSolver"/>
+<fullyQualifiedTypeName name="BranchAndBound_DepthFirst_LinearRelaxation_KnapsackSolver"/>
+<fullyQualifiedTypeName name="GreedyKnapsackSOlver"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
