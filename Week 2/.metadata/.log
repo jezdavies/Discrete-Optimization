@@ -4729,3 +4729,13 @@ java.library.path = .:/Library/Java/Extensions:/System/Library/Java/Extensions:/
 
 !ENTRY org.eclipse.osgi 2 1 2013-06-30 22:28:31.071
 !MESSAGE NLS unused message: MenuIconsPreferencePage.default in: org.tigris.subversion.subclipse.ui.messages
+!SESSION 2013-07-01 21:48:58.747 -----------------------------------------------
+eclipse.buildId=3.2.0.201303060821-RELEASE-e42
+java.version=1.6.0_51
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide -keyring /Users/jez.davies/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.sts.ide -keyring /Users/jez.davies/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2013-07-01 21:49:11.737
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|livelink|*.livelink|paq-crw-web11|*.paq-crw-web11|paq-crw-web12|*.paq-crw-web12|arq|*.arq|jira|*.jira|peoplesoft|*.peoplesoft by an external source. This value will be overwritten using the values from the preferences
