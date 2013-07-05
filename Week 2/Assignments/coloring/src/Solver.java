@@ -155,7 +155,7 @@ public class Solver {
 		System.out.println("-------------------------------");*/
 
 		GreedyGraphAlgorithm algorithm = new GreedyGraphAlgorithm();	
-		graph = algorithm.solveGraph(graph);
+		graph = algorithm.solveGraph2(graph);
 
 		/*System.out.println("Graph after solving:");
 		System.out.print(graph);

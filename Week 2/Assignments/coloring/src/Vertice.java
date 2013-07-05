@@ -129,4 +129,9 @@ public class Vertice {
 		
 	};
 
+	public void setNeighbourColours(Set<Integer> newNeighbourColours) {
+		neighbourColours = newNeighbourColours;
+		
+	}
+
 }
