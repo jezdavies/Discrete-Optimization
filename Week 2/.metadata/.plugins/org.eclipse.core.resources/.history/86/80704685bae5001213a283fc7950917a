@@ -149,18 +149,18 @@ public class Solver {
 
 
 	private void solve() throws Exception{
-		System.out.println("Graph before solving:");
+		/*System.out.println("Graph before solving:");
 		System.out.print(graph);
 		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");*/
 
 		GreedyGraphAlgorithm algorithm = new GreedyGraphAlgorithm();	
-		graph = algorithm.solveGraph2(graph);
+		graph = algorithm.solveGraph(graph);
 
-		System.out.println("Graph after solving:");
+		/*System.out.println("Graph after solving:");
 		System.out.print(graph);
 		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");*/
 
 	}
 }

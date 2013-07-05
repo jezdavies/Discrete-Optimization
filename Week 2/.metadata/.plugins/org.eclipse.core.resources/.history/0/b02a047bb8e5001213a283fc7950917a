@@ -167,14 +167,12 @@ public class Graph {
 				//add in the current colour to the set of used colours
 				usedColours.add(new Integer(oldColour));
 				//get the list of all colours and then remove those that have been used
-				List<Integer> potentialColours = new ArrayList<Integer>();
-				potentialColours.addAll(colours);
+				List<Integer> potentialColours = colours;
 				potentialColours.removeAll(usedColours);
 				//update the vertice to have one of the other free colours
 				//N.B. don't use the local vertice variable that we've pulled out for convenience, use the one in the collection
 				//we also need to use the verticeID, not the index that was originally passed in as we've now reordered the list of vertices to use the verticeID ordering
-				Integer newColour = potentialColours.get(0);
-				this.updateVerticeColour(verticeID, oldColour,newColour );
+				this.updateVerticeColour(verticeID, oldColour, potentialColours.get(0));
 				//now jump out of the loop as we've achieved our goal
 				break;
 			}

@@ -167,8 +167,7 @@ public class Graph {
 				//add in the current colour to the set of used colours
 				usedColours.add(new Integer(oldColour));
 				//get the list of all colours and then remove those that have been used
-				List<Integer> potentialColours = new ArrayList<Integer>();
-				potentialColours.addAll(colours);
+				List<Integer> potentialColours = colours;
 				potentialColours.removeAll(usedColours);
 				//update the vertice to have one of the other free colours
 				//N.B. don't use the local vertice variable that we've pulled out for convenience, use the one in the collection
