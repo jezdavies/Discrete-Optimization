@@ -78,8 +78,7 @@ public class GreedyGraphAlgorithm {
 			{
 				//let's see if we can get a neighbour to change it's colour without causing an issue
 				//in which case we can assign this vertice to have that colour instead of adding a new one
-				int freeColour = -1;
-				//freeColour = graph.changeVerticeColourToAnotherAvailableColour(topUncolouredVerticeIndex);
+				int freeColour = graph.changeVerticeColourToAnotherAvailableColour(topUncolouredVerticeIndex);
 				if(freeColour >= 0){
 					verticeColour = freeColour;
 				} else{

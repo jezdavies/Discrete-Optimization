@@ -149,7 +149,7 @@ public class Graph {
 		if(neighbourColours.size() < getColourCount()){				
 			//get the list of all colours and then remove those that have been used
 			availableColours.addAll(colours);
-			availableColours.removeAll(neighbourColours);
+			potentialColours.removeAll(neighbourColours);
 		}
 		return availableColours;
 	}

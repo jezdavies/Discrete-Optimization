@@ -148,8 +148,9 @@ public class Graph {
 		//if the number of neighbour colours is less than the number of colours in the graph then there is one that can be used
 		if(neighbourColours.size() < getColourCount()){				
 			//get the list of all colours and then remove those that have been used
-			availableColours.addAll(colours);
-			availableColours.removeAll(neighbourColours);
+			List<Integer> potentialColours = new ArrayList<Integer>();
+			potentialColours.addAll(colours);
+			potentialColours.removeAll(neighbourColours);
 		}
 		return availableColours;
 	}

@@ -140,16 +140,19 @@ public class Graph {
 		return availableColours;
 	}*/
 	
-	//alternate implementation of this method (original above)
 	public List<Integer> getColoursNotUsedByVerticeNeighbours(int verticeIndex){
 		List<Integer> availableColours = new ArrayList<Integer>();
-		Vertice vertice = vertices.get(verticeIndex);
-		Set<Integer> neighbourColours = vertice.getNeighbourColours();
+
+		Set<Integer> neighbourColours = vertices.get(verticeIndex).getNeighbourColours();
 		//if the number of neighbour colours is less than the number of colours in the graph then there is one that can be used
 		if(neighbourColours.size() < getColourCount()){				
-			//get the list of all colours and then remove those that have been used
-			availableColours.addAll(colours);
-			availableColours.removeAll(neighbourColours);
+			for(Integer c: getColours()){
+				if(!neighbourColours.contains(c)){
+					//we found a colour in the list of existing colours for the graph that isn't already assigned to a neighbour of this vertice
+					//so set the colour of the vertice
+					availableColours.add(c);
+				}
+			}
 		}
 		return availableColours;
 	}
