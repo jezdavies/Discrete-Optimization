@@ -1,0 +1,12 @@
+
+
+public class GraphColouringConstraintStore {
+	public GraphColouringConstraintStore(Edge[] edges, int[] nodes,
+			int[] colours, int nodeCount, int edgeCount, int colourCount) {
+		// TODO Auto-generated constructor stub
+	}
+
+	private Graph data = new Graph();
+	
+	
+}

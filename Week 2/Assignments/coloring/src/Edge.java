@@ -1,32 +1,32 @@
 
 public class Edge {
 	private int id;
-	private int startNode;
-	private int endNode;
+	private int startVertice;
+	private int endVertice;
 	
 	public Edge(int idIn, int startIn, int endIn){
 		id = idIn;
-		startNode = startIn;
-		endNode = endIn;
+		startVertice = startIn;
+		endVertice = endIn;
 	}
 	
 	public int getId(){
 		return id;
 	}
 
-	public int getStartNode() {
-		return startNode;
+	public int getStartVertice() {
+		return startVertice;
 	}
 
-	public int getEndNode() {
-		return endNode;
+	public int getEndVertice() {
+		return endVertice;
 	}
 	
 	@Override
 	public String toString(){
 		String output = "id: " + id + "\n";
-		output += "startNode: " + startNode + "\n";
-		output += "endNode: " + endNode + "\n";
+		output += "startNode: " + startVertice + "\n";
+		output += "endNode: " + endVertice + "\n";
 		
 		return output;
 	}

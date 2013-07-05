@@ -1,0 +1,36 @@
+import java.util.List;
+
+
+public class Vertice {
+	private int id;
+	private int colour;
+	private int numberOfUncolouredNeighbours;
+	private List<Integer> neighbourIDs;
+	
+	public Vertice(int idIn, int colourIn){
+		setId(idIn);
+		colour = colourIn;
+		
+	}
+
+	public List<Integer> getNeighbourIDs() {
+		return neighbourIDs;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getNumberOfUncolouredNeighbours() {
+		return numberOfUncolouredNeighbours;
+	}
+
+	public void setNumberOfUncolouredNeighbours(int numberOfUncolouredNeighbours) {
+		this.numberOfUncolouredNeighbours = numberOfUncolouredNeighbours;
+	}
+
+}

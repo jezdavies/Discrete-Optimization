@@ -1,0 +1,13 @@
+
+
+public class GraphColouringConstraintStore {
+	
+	private Graph graph;
+	
+	public GraphColouringConstraintStore(Graph graphIn) {
+		graph = graphIn;
+	}
+	
+	
+	
+}

@@ -1,0 +1,20 @@
+import java.util.List;
+
+
+public class GraphColouringConstraintStore {
+	private Edge[] edges;
+	private int[] nodes;
+	private int[] colours;
+	private int nodeCount;
+	private int edgeCount;
+	private int colourCount;
+	
+	public GraphColouringConstraintStore(Edge[] edges, int[] nodes,
+			int[] colours, int nodeCount, int edgeCount, int colourCount) {
+		// TODO Auto-generated constructor stub
+	}
+
+	private List<Constraint> constraints;
+	
+	
+}

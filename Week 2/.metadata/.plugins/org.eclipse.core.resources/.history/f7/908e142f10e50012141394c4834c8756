@@ -1,0 +1,69 @@
+import java.util.List;
+
+
+public class Vertice {
+	private int id;
+	private int colour;
+	private int numberOfUncolouredNeighbours;
+	private List<Integer> neighbourIDs;
+	
+	public Vertice(int idIn, int colourIn){
+		setId(idIn);
+		setColour(colourIn);
+		neighbourIDs = new ArrayList<Integer>;
+		
+	}
+
+	public List<Integer> getNeighbourIDs() {
+		return neighbourIDs;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getNumberOfUncolouredNeighbours() {
+		return numberOfUncolouredNeighbours;
+	}
+
+	public void setNumberOfUncolouredNeighbours(int numberOfUncolouredNeighbours) {
+		this.numberOfUncolouredNeighbours = numberOfUncolouredNeighbours;
+	}
+
+	public int getColour() {
+		return colour;
+	}
+
+	public void setColour(int colour) {
+		this.colour = colour;
+	}
+	
+	public void addNeighbourID(int neighbourID)
+	{
+		neighbourIDs.add(new Integer(neighbourID));
+	}
+	
+	public void addUncolouredNeighbourID(int neighbourID)
+	{
+		neighbourIDs.add(new Integer(neighbourID));
+		numberOfUncolouredNeighbours += 1;
+	}
+	
+	public String toString(){
+		String output = "ID: " + getId() + "\n";
+		output += "Colour: " + getColour() + "\n";
+		output += "NeighbourIDs: ";
+		for(Integer i:neighbourIDs){
+			output += i + " ";
+		}
+		output += "\n";
+		output += "Number of uncoloured neighbours: " + getNumberOfUncolouredNeighbours() + "\n";
+		output += "----------------------------\n";
+		return output;
+	}
+
+}

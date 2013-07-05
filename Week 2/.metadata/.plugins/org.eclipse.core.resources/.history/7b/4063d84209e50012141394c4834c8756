@@ -1,0 +1,69 @@
+import java.util.List;
+
+
+public class Graph {
+	private List<Edge> edges;
+	private List<Vertice> vertices;	
+	private List<int> colours;
+
+	public Graph(List<Vertice> verticesIn, List<Edge>  edgesIn, int[] coloursIn, int verticeCountIn, int edgeCountIn, int colourCountIn) {
+		edges = edgesIn;
+		vertices = verticesIn;
+	}
+
+	public List<Edge>  getEdges() {
+		return edges;
+	}
+
+	public void setEdges(List<Edge>  edges) {
+		this.edges = edges;
+	}
+
+	public int[][] getVertices() {
+		return vertices;
+	}
+
+	public void setVertices(List<Vertice> vertices) {
+		this.vertices = vertices;
+	}
+
+	public int[] getColours() {
+		return colours;
+	}
+
+	public void setColours(int[] colours) {
+		this.colours = colours;
+	}
+
+	public int getVerticeCount() {
+		return verticeCount;
+	}
+
+	public void setVerticeCount(int nodeCount) {
+		this.verticeCount = nodeCount;
+	}
+
+	public int getEdgeCount() {
+		return edgeCount;
+	}
+
+	public void setEdgeCount(int edgeCount) {
+		this.edgeCount = edgeCount;
+	}
+
+	public int getColourCount() {
+		return colourCount;
+	}
+
+	public void setColourCount(int colourCount) {
+		this.colourCount = colourCount;
+	}
+
+	public List<Constraint> getConstraints() {
+		return constraints;
+	}
+
+	public void setConstraints(List<Constraint> constraints) {
+		this.constraints = constraints;
+	}
+}
