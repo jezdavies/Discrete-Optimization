@@ -54,7 +54,7 @@ public class Solver {
 		if(fileName == null){
 			//return;
 			//TODO remove hardcoded file to be used if no parameter passed
-			fileName = "./data/gc_4_1";
+			fileName = "./data/gc_1000_5";
 		}
 		//System.out.println("************FILENAME: " + fileName + " ******************");
 
@@ -149,18 +149,18 @@ public class Solver {
 
 
 	private void solve() throws Exception{
-		System.out.println("Graph before solving:");
+		/*System.out.println("Graph before solving:");
 		System.out.print(graph);
 		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");*/
 
 		GreedyGraphAlgorithm algorithm = new GreedyGraphAlgorithm();	
 		graph = algorithm.solveGraph2(graph);
 
-		System.out.println("Graph after solving:");
+		/*System.out.println("Graph after solving:");
 		System.out.print(graph);
 		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");*/
 
 	}
 }
