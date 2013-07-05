@@ -6,8 +6,7 @@ import java.util.Set;
 public class GreedyGraphAlgorithm {
 	private Graph graph;
 	
-	//improved and refactored version of solve that has improved method of determining available colours
-	//Also sees if instead of creating a new colour it can assign a different colour to a neighbour - not currently working
+	//improved version of solve that has improved method ofsees if instead of creating a new colour it can assign a different colour to a neighbour
 	public Graph solveGraph(Graph graphIn){
 		graph = graphIn;
 		//repeat the following for every vertice in the graph
