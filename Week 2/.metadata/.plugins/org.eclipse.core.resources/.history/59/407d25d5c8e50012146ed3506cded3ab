@@ -140,7 +140,7 @@ public class Graph {
 		return availableColours;
 	}*/
 	
-	//alternate implementation of this method (original above) as wasn't getting correct result for remaining free colours
+	//alternate implementation of this method (original above)
 	public List<Integer> getColoursNotUsedByVerticeNeighbours(int verticeIndex){
 		List<Integer> availableColours = new ArrayList<Integer>();
 		Vertice vertice = vertices.get(verticeIndex);
