@@ -108,6 +108,17 @@ public class Vertice {
 		
 	};
 	
+	public static Comparator<Vertice> descendingNumberNeighboursComparator = new Comparator<Vertice>(){
+		public int compare(Vertice v1, Vertice v2){
+			
+			//use descending order
+			int compareResult = new Integer(v2.getNeighbourIDs().size()).compareTo(new Integer(v1.getNeighbourIDs().size()));
+			//if they have the same ratio then let's put the one with the most neighbours first
+			return compareResult;
+		}
+		
+	};
+	
 	public static Comparator<Vertice> ascendingIDComparator = new Comparator<Vertice>(){
 		public int compare(Vertice v1, Vertice v2){
 			

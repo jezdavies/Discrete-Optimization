@@ -1,0 +1,7 @@
+
+public class ConstraintProgrammingGraphAlgorithm {
+	private Graph graph;
+	public Graph solveGraph(Graph graphIn){
+		
+	}
+}

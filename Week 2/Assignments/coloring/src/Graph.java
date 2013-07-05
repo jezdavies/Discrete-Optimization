@@ -54,6 +54,9 @@ public class Graph {
 	public void sortVerticesByDescendingNumberUncolouredNeighbours(){
 		Collections.sort(vertices, Vertice.descendingNumberUncolouredNeighboursComparator);
 	}
+	public void sortVerticesByDescendingNumberNeighbours(){
+		Collections.sort(vertices, Vertice.descendingNumberNeighboursComparator);
+	}
 	
 	public void sortVerticesByAscendingId()
 	{
