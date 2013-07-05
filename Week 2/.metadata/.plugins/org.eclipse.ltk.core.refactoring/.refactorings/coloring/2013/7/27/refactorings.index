@@ -25,4 +25,3 @@
 1372989092749	Encapsulate field 'neighbourColours'
 1372989632769	Encapsulate field 'coloured'
 1373037651049	Rename local variable 'freeColour'
-1373056302423	Rename local variable 'allVertices'
