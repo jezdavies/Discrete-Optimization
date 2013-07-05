@@ -1,0 +1,41 @@
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+
+public class GreedyGraphAlgorithm {
+	private Graph graph;
+	public Graph solverGraph(Graph graphIn){
+		graph = graphIn;
+		//repeat the following for every vertice in the graph
+		for(int i = 0; i < graph.getVerticeCount() - 1; i++){
+			//order the vertices by their number of uncoloured neighbours
+			graph.sortVerticesByDescendingNumberUncolouredNeighbours();
+			//assign the most connected vertice the first colour that isn't used by one of it's neighbours
+			//first get the most connected vertice
+			int topUncolouredVerticeIndex = graph.getIndexOfTopUncolouredVertice();
+			Vertice topUncolouredVertice = graph.getVerticeByIndex(topUncolouredVerticeIndex);
+			//get the set of colours that it's neighbours have
+			Set<Integer> neighbourColours = topUncolouredVertice.getNeighbourColours();
+			boolean colourAssigned = false;
+			int verticeColour;
+			//loop through all the current colours for the graph and see if we can find one that hasn't been assigned to one of it's neighbours
+			for(Integer c: graph.getColours()){
+				if(!neighbourColours.contains(c)){
+					//we found a colour in the list of existing colours for the graph that isn't already assigned to a neighbour of this vertice
+					//so set the colour of the vertice
+					verticeColour = c;
+					//mark that we successfully assigned a colour to a vertice
+					colourAssigned = true;
+				}
+			}
+			//check if we managed to assign a colour, if we didn't then we need to add a new colour to the graph and assign it to this node
+			if(!colourAssigned){
+				int newColour = graph.addNewColourToGraph();
+				
+			}
+			//TODO complete greedy algorithm
+		}
+		
+	}
+}

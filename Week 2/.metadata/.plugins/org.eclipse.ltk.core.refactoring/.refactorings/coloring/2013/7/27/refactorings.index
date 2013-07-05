@@ -22,3 +22,5 @@
 1372985152675	Encapsulate field 'colour'
 1372985287585	Rename local variable 'startVertice'
 1372985310084	Rename local variable 'endVertice'
+1372989092749	Encapsulate field 'neighbourColours'
+1372989632769	Encapsulate field 'coloured'

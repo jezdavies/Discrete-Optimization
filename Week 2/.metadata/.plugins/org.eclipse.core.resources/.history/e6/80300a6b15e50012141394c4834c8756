@@ -1,0 +1,97 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+
+public class Vertice {
+	private int id;
+	private int colour;
+	private int numberOfUncolouredNeighbours;
+	private List<Integer> neighbourIDs;
+	private List<Integer> neighbourColours;
+	
+	public Vertice(int idIn, int colourIn){
+		setId(idIn);
+		setColour(colourIn);
+		neighbourIDs = new ArrayList<Integer>();
+		neighbourColours = new ArrayList<Integer>();
+	}
+
+	public List<Integer> getNeighbourIDs() {
+		return neighbourIDs;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getNumberOfUncolouredNeighbours() {
+		return numberOfUncolouredNeighbours;
+	}
+
+	public void setNumberOfUncolouredNeighbours(int numberOfUncolouredNeighbours) {
+		this.numberOfUncolouredNeighbours = numberOfUncolouredNeighbours;
+	}
+
+	public int getColour() {
+		return colour;
+	}
+
+	public void setColour(int colour) {
+		this.colour = colour;
+	}
+	
+	public void addNeighbourID(int neighbourID)
+	{
+		neighbourIDs.add(new Integer(neighbourID));
+	}
+	
+	public void addUncolouredNeighbourID(int neighbourID)
+	{
+		neighbourIDs.add(new Integer(neighbourID));
+		numberOfUncolouredNeighbours += 1;
+	}
+	
+	public String toString(){
+		String output = "ID: " + getId() + "\n";
+		output += "Colour: " + getColour() + "\n";
+		output += "NeighbourIDs: ";
+		for(Integer i:neighbourIDs){
+			output += i + " ";
+		}
+		output += "\n";
+		output += "Number of uncoloured neighbours: " + getNumberOfUncolouredNeighbours() + "\n";
+		output += "----------------------------\n";
+		return output;
+	}
+	
+	public static Comparator<Vertice> descendingNumberUncolouredNeighboursComparator = new Comparator<Vertice>(){
+		public int compare(Vertice v1, Vertice v2){
+			
+			//use descending order
+			int compareResult = new Integer(v2.getNumberOfUncolouredNeighbours()).compareTo(new Integer(v1.getNumberOfUncolouredNeighbours()));
+			//if they have the same ratio then let's put the one with the most neighbours first
+			if(compareResult == 0)
+			{
+				compareResult = new Integer(v2.getNeighbourIDs().size()).compareTo(new Integer(v1.getNeighbourIDs().size()));
+			}
+			return compareResult;
+		}
+		
+	};
+	
+	public static Comparator<Vertice> ascendingIDComparator = new Comparator<Vertice>(){
+		public int compare(Vertice v1, Vertice v2){
+			
+			//use ascending order
+			int compareResult = new Integer(v1.getId()).compareTo(new Integer(v2.getId()));
+			return compareResult;
+		}
+		
+	};
+
+}

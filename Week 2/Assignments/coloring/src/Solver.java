@@ -39,8 +39,6 @@ public class Solver {
     	int verticeCount;
     	int edgeCount;
     	int colourCount;
-    	List<Edge> edges = new ArrayList<Edge>();
-    	List<Vertice> vertices = new ArrayList<Vertice>();
     	List<Integer> colours= new ArrayList<Integer>();
     	
     	//now get the file we're going to parse
@@ -55,7 +53,7 @@ public class Solver {
         if(fileName == null){
             //return;
         	//TODO remove hardcoded file to be used if no parameter passed
-        	fileName = "./data/gc_4_1";
+        	fileName = "./data/gc_20_1";
         }
         //System.out.println("************FILENAME: " + fileName + " ******************");
 
@@ -78,6 +76,8 @@ public class Solver {
         String[] firstLine = lines.get(0).split("\\s+");
         verticeCount = Integer.parseInt(firstLine[0]);
         edgeCount = Integer.parseInt(firstLine[1]);
+        List<Edge> edges = new ArrayList<Edge>(edgeCount);
+    	List<Vertice> vertices = new ArrayList<Vertice>(verticeCount);
         
         for(int i=1; i < edgeCount+1; i++){
           String line = lines.get(i);
@@ -91,7 +91,7 @@ public class Solver {
           
           //check if we already have the vertice that this edge starts with
           if((vertices.size() < (startVerticeID + 1)) || (vertices.get(startVerticeID) == null)){
-        	   startVertice = new Vertice(startVerticeID, 0);
+        	   startVertice = new Vertice(startVerticeID);
         	   //we know it has a neighbour that is at the end of this edge so add it to the list
         	   startVertice.addUncolouredNeighbourID(new Integer(endVerticeID));
         	  vertices.add(startVerticeID, startVertice);        	  
@@ -104,10 +104,10 @@ public class Solver {
           }
           //now do the same for the end vertice
           if((vertices.size() < (endVerticeID + 1)) || (vertices.get(endVerticeID) == null)){
-       	   endVertice = new Vertice(endVerticeID, 0);
+       	   endVertice = new Vertice(endVerticeID);
        	   //we know it has a neighbour that is at the start of this edge so add it to the list
        	   endVertice.addUncolouredNeighbourID(new Integer(startVerticeID));
-       	  vertices.add(endVerticeID, endVertice);        	  
+       	   vertices.add(endVerticeID, endVertice);        	  
          }else{
        	  //we already have this vertice but lets see if it already has the start of this vertice registered as a neighbour, if not then add it
        	  if(!vertices.get(endVerticeID).getNeighbourIDs().contains(new Integer(startVerticeID))){
@@ -128,33 +128,28 @@ public class Solver {
     	
         // prepare the solution in the specified output format
         System.out.println(graph.getColourCount() +" 0");
-        for(Integer i : graph.getColours()){
-        	System.out.print(i + " ");
+        
+        for(Vertice v : graph.getVertices()){
+        	System.out.print(v.getColour() + " ");
         	
         }      
     }
     
-    private void showInput(){
-    	System.out.println("Edges:");
-    	for(Edge e:graph.getEdges()){
-    		System.out.println(e);
-    	}
-    	System.out.println("Vertices:");
-    	for(Vertice v:graph.getVertices()){
-    		System.out.println(v);
-    	}
-    	System.out.println("Colours:");
-    	for(Integer c:graph.getColours()){
-    		System.out.println(c);
-    	}
-    }
+
     
     private void solve() throws Exception{
-    	showInput();   
+    	System.out.println("Graph before solving:");
+    	System.out.print(graph);
+    	System.out.println("-------------------------------");
+    	System.out.println("-------------------------------");
     	
-    	GreedyGraphAlgorithm algorithm = new GreedyGraphAlgorithm();
-    	graph = algorithm.solverGraph(graph);
+    	GreedyGraphAlgorithm algorithm = new GreedyGraphAlgorithm();	
+    	graph = algorithm.solveGraph(graph);
     	
+    	System.out.println("Graph after solving:");
+    	System.out.print(graph);
+    	System.out.println("-------------------------------");
+    	System.out.println("-------------------------------");
     	 
     }
 }

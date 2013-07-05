@@ -1,5 +1,6 @@
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 
 public class Graph {
@@ -57,6 +58,62 @@ public class Graph {
 	public void sortVerticesByAscendingId()
 	{
 		Collections.sort(vertices, Vertice.ascendingIDComparator);
+	}
+	
+	public Vertice getVerticeByIndex(int verticeIndex){
+		return vertices.get(verticeIndex);
+	}
+	
+	public void setVerticeByIndex(int verticeIndex, Vertice verticeIn){
+		vertices.set(verticeIndex, verticeIn);
+	}
+	
+	public int getIndexOfTopUncolouredVertice(){
+		int index = 0;
+		for(int i = 0; i < vertices.size(); i++){
+			if(!vertices.get(i).isColoured()){
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}
+
+	public void updateVerticesWithNeighbourColour(Set<Integer> verticeIDsToUpdate, Integer neighbourColour) {
+		for(Vertice v:vertices){
+			if(verticeIDsToUpdate.contains(new Integer(v.getId()))){
+				v.addNeighbourColour(neighbourColour);
+				v.setNumberOfUncolouredNeighbours(v.getNumberOfUncolouredNeighbours() - 1);
+			}
+		}
+		
+	}
+	
+	public int addNewColourToGraph()
+	{
+		int newMaxColour = colours.size();
+		colours.add(newMaxColour);
+		return newMaxColour;
+	}
+	
+	public String toString(){
+		String output = "";
+		
+    	output += "Edges:\n";
+    	for(Edge e:getEdges()){
+    		output +=e;
+    	}
+    	output +="Vertices:\n";
+    	for(Vertice v:getVertices()){
+    		output +=v;
+    	}
+    	output +="Colours:\n";
+    	for(Integer c:getColours()){
+    		output +=c + " ";
+    	}
+    	output += "\n";
+    	
+    	return output;
 	}
 	
 }
