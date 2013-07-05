@@ -78,7 +78,6 @@ public class GreedyGraphAlgorithm {
 			{
 				//let's see if we can get a neighbour to change it's colour without causing an issue
 				//in which case we can assign this vertice to have that colour instead of adding a new one
-				//TODO get the most connected vertice to change it's colour rather than just a random one?
 				int freeColour = graph.changeVerticeColourToAnotherAvailableColour(topUncolouredVerticeIndex);
 				if(freeColour >= 0){
 					verticeColour = freeColour;
