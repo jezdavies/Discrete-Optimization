@@ -150,8 +150,8 @@ public class Graph {
 		Vertice vertice = vertices.get(verticeIndex);
 		//for each neighbour of the vertice see if it can take more than just the one colour it has at the moment
 		Set<Integer> neighbourIDs = vertice.getNeighbourIDs();
-		List<Integer>descendingDegreeNeighbourIDs = orderSubsetOfVerticeIDsByVerticeDegreeDescending(neighbourIDs);
-		for(Integer i:descendingDegreeNeighbourIDs){
+		List<Integer>descendingDegreeNeighbourIDs = orderSubsetOfVerticeIDsByVerticeDegree(neighbourIDs);
+		for(Integer i:neighbourIDs){
 			//get the set of neighbour colours for this vertice
 			Set<Integer> usedColours = vertice.getNeighbourColours();
 			//if the number of neighbour colours is less than the number of colours in the graph -1
@@ -176,25 +176,19 @@ public class Graph {
 		return oldColour;
 	}
 
-	private List<Integer> orderSubsetOfVerticeIDsByVerticeDegreeDescending(
+	private List<Integer> orderSubsetOfVerticeIDsByVerticeDegree(
 			Set<Integer> verticeIDs) {
 		//we're going to order the set of ids by the degree (number of connections) of the vertice it represents
 		List<Integer> orderedVerticeIDs = new ArrayList<Integer>();
-		//get the set of all vertices and order them by their ID so we can pull them out of the list using their index
-		List<Vertice> allVerticesOrderedByID = vertices;
-		Collections.sort(allVerticesOrderedByID, Vertice.ascendingIDComparator);
-		//now let's get the set of vertices that the IDs represent
+		List<Integer> allVertices = vertices;
+		//first let's get the set of vertices
 		List<Vertice> orderedVertices = new ArrayList<Vertice>();
 		for(Integer i:verticeIDs){
-			orderedVertices.add(allVerticesOrderedByID.get(i));
+			orderedVertices.add(vertices.get)
 		}
-		//now let's sort the list of vertices by their degree
-		Collections.sort(orderedVertices, Vertice.descendingNumberNeighboursComparator);
-		//now put the IDs into the list in that order and return them
-		for(Vertice v:orderedVertices){
-			orderedVerticeIDs.add(v.getId());
-		}
-		return orderedVerticeIDs;
+		
+
+		return null;
 	}
 
 	public void setVerticeColour(int verticeIndex,
