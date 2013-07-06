@@ -219,8 +219,8 @@ public class Graph {
 				countOfUncolouredNeighbours += 1;
 			}			
 		}
-		vertices.get(verticeID).setNeighbourColours(newNeighbourColours);
-		vertices.get(verticeID).setNumberOfUncolouredNeighbours(countOfUncolouredNeighbours);		
+		vertices.get(verticeIndex).setNeighbourColours(newNeighbourColours);
+		vertices.get(verticeIndex).setNumberOfUncolouredNeighbours(countOfUncolouredNeighbours);		
 	}
 	
 	

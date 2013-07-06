@@ -208,9 +208,9 @@ public class Graph {
 		}		
 	}
 
-	private void refreshNeighbourColours(int verticeID) {
+	private void refreshNeighbourColours(int verticeIndex) {
 		Set<Integer> newNeighbourColours = new HashSet<Integer>();
-		Set<Integer> neighbourIDs = vertices.get(verticeID).getNeighbourIDs();
+		Set<Integer> neighbourIDs = vertices.get(verticeIndex).getNeighbourIDs();
 		int countOfUncolouredNeighbours = 0;
 		for(Integer neighbourID: neighbourIDs){
 			if(vertices.get(neighbourID).isColoured()){
@@ -219,8 +219,8 @@ public class Graph {
 				countOfUncolouredNeighbours += 1;
 			}			
 		}
-		vertices.get(verticeID).setNeighbourColours(newNeighbourColours);
-		vertices.get(verticeID).setNumberOfUncolouredNeighbours(countOfUncolouredNeighbours);		
+		vertices.get(verticeIndex).setNeighbourColours(newNeighbourColours);
+		vertices.get(verticeIndex).setNumberOfUncolouredNeighbours(countOfUncolouredNeighbours);		
 	}
 	
 	

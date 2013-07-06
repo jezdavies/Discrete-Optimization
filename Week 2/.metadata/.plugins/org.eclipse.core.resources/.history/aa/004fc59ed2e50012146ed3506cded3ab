@@ -163,10 +163,10 @@ public class Graph {
 	public int changeVerticeColourToAnotherAvailableColour(
 			int verticeID) {
 		int oldColour = -1;
-		
+		//get the ID of the vertice in question as we're going to need to reorder the set of vertices
+		Vertice vertice = vertices.get(verticeID);
 				
 		//get the set of neighbourIDs for the vertice
-		Vertice vertice = vertices.get(verticeID);
 		Set<Integer> neighbourIDs = vertice.getNeighbourIDs();
 		
 		for(Integer i:neighbourIDs){
@@ -180,7 +180,7 @@ public class Graph {
 				oldColour = vertices.get(i).getColour();
 				//update the vertice to have one of the other free colours
 				//N.B. don't use the local vertice variable that we've pulled out for convenience, use the one in the collection
-				updateVerticeColour(i, oldColour, availableColours.get(0));
+				updateVerticeColour(verticeID, oldColour, availableColours.get(0));
 				//now jump out of the loop as we've achieved our goal
 				break;
 			}
@@ -197,20 +197,20 @@ public class Graph {
 		updateVerticesWithNeighbourNewColour(vertices.get(verticeID).getNeighbourIDs(), verticeColour);
 	}
 	
-	private void updateVerticeColour(int verticeID, int oldColour,
+	private void updateVerticeColour(int verticeIndex, int oldColour,
 			Integer newColour) {
 		//set the colour of the vertice as requested and then update it's neighbours so they know it's colour
-		vertices.get(verticeID).setColour(newColour);
+		vertices.get(verticeIndex).setColour(newColour);
 		//now get it's neighbours to update their list of neighbour colours
-		Set<Integer> verticeNeighbourIDs = vertices.get(verticeID).getNeighbourIDs();
+		Set<Integer> verticeNeighbourIDs = vertices.get(verticeIndex).getNeighbourIDs();
 		for(Integer neighbourID: verticeNeighbourIDs){
 			refreshNeighbourColours(neighbourID);
 		}		
 	}
 
-	private void refreshNeighbourColours(int verticeID) {
+	private void refreshNeighbourColours(int verticeIndex) {
 		Set<Integer> newNeighbourColours = new HashSet<Integer>();
-		Set<Integer> neighbourIDs = vertices.get(verticeID).getNeighbourIDs();
+		Set<Integer> neighbourIDs = vertices.get(verticeIndex).getNeighbourIDs();
 		int countOfUncolouredNeighbours = 0;
 		for(Integer neighbourID: neighbourIDs){
 			if(vertices.get(neighbourID).isColoured()){
@@ -219,8 +219,8 @@ public class Graph {
 				countOfUncolouredNeighbours += 1;
 			}			
 		}
-		vertices.get(verticeID).setNeighbourColours(newNeighbourColours);
-		vertices.get(verticeID).setNumberOfUncolouredNeighbours(countOfUncolouredNeighbours);		
+		vertices.get(verticeIndex).setNeighbourColours(newNeighbourColours);
+		vertices.get(verticeIndex).setNumberOfUncolouredNeighbours(countOfUncolouredNeighbours);		
 	}
 	
 	
