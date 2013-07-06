@@ -193,6 +193,8 @@ public class Graph {
 
 	public void setVerticeColour(int verticeID,
 			int verticeColour) {
+		//sort the vertices by ID so we can access the vertice in question
+		Collections.sort(vertices, Vertice.ascendingIDComparator);
 		//set the colour of the vertice as requested and then update it's neighbours so they know it's colour
 		vertices.get(verticeID).setColour(verticeColour);
 		updateVerticesWithNeighbourNewColour(vertices.get(verticeID).getNeighbourIDs(), verticeColour);

@@ -170,6 +170,8 @@ public class Graph {
 		//get the set of neighbourIDs for the vertice
 		Set<Integer> neighbourIDs = vertice.getNeighbourIDs();
 		
+		//now reorder the set of vertices so that we can pull the neighbours out
+		Collections.sort(vertices, Vertice.ascendingIDComparator);
 		for(Integer i:neighbourIDs){
 			//get the set of neighbour colours for this neighbour of the target vertice
 			List<Integer> availableColours = getColoursNotUsedByVerticeNeighbours(i);
@@ -181,7 +183,7 @@ public class Graph {
 				oldColour = vertices.get(i).getColour();
 				//update the vertice to have one of the other free colours
 				//N.B. don't use the local vertice variable that we've pulled out for convenience, use the one in the collection
-				updateVerticeColour(verticeID, oldColour, availableColours.get(0));
+				updateVerticeColour(verticeID, oldColour, potentialColours.get(0));
 				//now jump out of the loop as we've achieved our goal
 				break;
 			}
@@ -193,6 +195,8 @@ public class Graph {
 
 	public void setVerticeColour(int verticeID,
 			int verticeColour) {
+		//sort the vertices by ID so we can access the vertice in question
+		Collections.sort(vertices, Vertice.ascendingIDComparator);
 		//set the colour of the vertice as requested and then update it's neighbours so they know it's colour
 		vertices.get(verticeID).setColour(verticeColour);
 		updateVerticesWithNeighbourNewColour(vertices.get(verticeID).getNeighbourIDs(), verticeColour);

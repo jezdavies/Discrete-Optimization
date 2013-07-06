@@ -21,7 +21,7 @@ public class GreedyGraphAlgorithm {
 			int topUncolouredVerticeIndex = graph.getIndexOfTopUncolouredVertice();
 			int topUncolouredVerticeID = graph.getVerticeByIndex(topUncolouredVerticeIndex).getId();
 			int verticeColour = 0;
-			//now sort the vertices back into ID order so we can pull them out reliably without issue using their IDs
+			//now sort the vertices back into ID order so we can pull them out reliably without issue using their ID
 			graph.sortVerticesByAscendingId();
 			//now get the set of available colours for that vertice (i.e. ones that aren't being used by any of it's neighbours)
 			List<Integer> availableColours = graph.getColoursNotUsedByVerticeNeighbours(topUncolouredVerticeID);

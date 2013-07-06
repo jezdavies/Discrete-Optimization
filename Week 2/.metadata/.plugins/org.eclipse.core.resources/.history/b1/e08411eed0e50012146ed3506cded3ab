@@ -21,10 +21,10 @@ public class GreedyGraphAlgorithm {
 			int topUncolouredVerticeIndex = graph.getIndexOfTopUncolouredVertice();
 			int topUncolouredVerticeID = graph.getVerticeByIndex(topUncolouredVerticeIndex).getId();
 			int verticeColour = 0;
-			//now sort the vertices back into ID order so we can pull them out reliably without issue using their IDs
-			graph.sortVerticesByAscendingId();
+			//now sort the vertices back into ID order so we can pull them out reliably without issue
+			Collections.sort(vertices, Vertice.ascendingIDComparator);
 			//now get the set of available colours for that vertice (i.e. ones that aren't being used by any of it's neighbours)
-			List<Integer> availableColours = graph.getColoursNotUsedByVerticeNeighbours(topUncolouredVerticeID);
+			List<Integer> availableColours = graph.getColoursNotUsedByVerticeNeighbours(topUncolouredVerticeIndex);
 			if(availableColours.size()>0){
 				//we have an available colour so select the first one
 				//TODO ?change this so we assign the most or least used colour rather than just a random one?
@@ -35,7 +35,7 @@ public class GreedyGraphAlgorithm {
 				//let's see if we can get a neighbour to change it's colour without causing an issue
 				//in which case we can assign this vertice to have that colour instead of adding a new one
 				int freeColour = -1;
-				//freeColour = graph.changeVerticeColourToAnotherAvailableColour(topUncolouredVerticeID);
+				//freeColour = graph.changeVerticeColourToAnotherAvailableColour(topUncolouredVerticeIndex);
 				if(freeColour >= 0){
 					verticeColour = freeColour;
 				} else{
