@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Vertice {
 	private int id;
-	private int colour;
+	private int colour = -1;
 	private boolean coloured = false;
 	private int numberOfUncolouredNeighbours;
 	private Set<Integer> neighbourIDs;
