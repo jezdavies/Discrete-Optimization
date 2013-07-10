@@ -146,7 +146,7 @@ public class Graph {
 		List<Integer> availableColours = new ArrayList<Integer>();
 		Vertice vertice = vertices.get(verticeIndex);
 		Set<Integer> neighbourColours = vertice.getNeighbourColours();
-		//System.out.println("Neighbour colours for vertice : " + verticeIndex + " are: " + neighbourColours);
+		System.out.println("Neighbour colours for vertice : " + verticeIndex + " are: " + neighbourColours);
 		//if the number of neighbour colours is less than the number of colours in the graph then there is one that can be used
 		if(neighbourColours.size() < getColourCount()){				
 			//get the list of all colours and then remove those that have been used
@@ -166,13 +166,13 @@ public class Graph {
 			int verticeID) {
 		int oldColour = -1;
 
-		//System.out.println("changeVerticeColourToAnotherAvailableColour called for verticeID: " + verticeID);
+		System.out.println("changeVerticeColourToAnotherAvailableColour called for verticeID: " + verticeID);
 
 		//get the set of neighbourIDs for the vertice
 		Vertice vertice = vertices.get(verticeID);
 		Set<Integer> neighbourIDs = vertice.getNeighbourIDs();
 
-		//System.out.println("NeighbourIDs:" + neighbourIDs);
+		System.out.println("NeighbourIDs:" + neighbourIDs);
 
 		for(Integer i:neighbourIDs){
 			Integer verticeCurrentColour = new Integer(vertices.get(i).getColour());
@@ -187,38 +187,25 @@ public class Graph {
 				//if the number of available colours is greater than zero then we can make a switch
 				//so change the colour to that one
 				if(availableColours.size() > 0){
-					//System.out.println("Examining neighbour ID: " + i);
-					//System.out.println("Current colour is: " + verticeCurrentColour);
-					//System.out.println("Vertice is marked as coloured and has some available colours");
+					System.out.println("Examining neighbour ID: " + i);
+					System.out.println("Current colour is: " + verticeCurrentColour);
+					System.out.println("Vertice is marked as coloured and has some available colours");
 
-					//System.out.println("availableColours.size = " + availableColours.size());
-					//System.out.println("availableColours are: " + availableColours);
+					System.out.println("availableColours.size = " + availableColours.size());
+					System.out.println("availableColours are: " + availableColours);
 					
 					oldColour = vertices.get(i).getColour();
-					//System.out.println("oldColour set to " + oldColour);
+					System.out.println("oldColour set to " + oldColour);
 
 					//update the vertice to have one of the other free colours
 					//N.B. don't use the local vertice variable that we've pulled out for convenience, use the one in the collection
-					//System.out.println("calling updateVerticeColour with verticeID=" + i + ", newverticeColour=" + availableColours.get(0));
+					System.out.println("calling updateVerticeColour with verticeID=" + i + ", newverticeColour=" + availableColours.get(0));
 					updateVerticeColour(i, availableColours.get(0));
-					//check if that colour is no longer in the set of neighbour colours for the vertice we're trying to change colours
-					//if it isn't in there then we've hit our goal and can change it's colour
-					//refresh our local copy of the vertice so we get the udpated set of neighbour colours
-					vertice = vertices.get(verticeID);
-					Set<Integer> verticeNeighbourColours = vertice.getNeighbourColours();
-					if(!verticeNeighbourColours.contains(oldColour))
-					{
-						//we can change the colour so jump out of the loop as we've achieved our goal
-						//System.out.println("We found a free colour: " + availableColours.get(0) + " and free up colour: " + oldColour + 
-								//"so Finished examining neighbour ID: " + i + " and exiting loop");
-						//System.out.println("-----------------------------------------------------------------------");
-						break;
-					} else {
-						//we can't change the colour of the node so reset the oldcolour variable to -1
-						oldColour = -1;
-					}
-					
-					
+					//now jump out of the loop as we've achieved our goal
+					System.out.println("We found a free colour: " + availableColours.get(0) + " and free up colour: " + oldColour + 
+							"so Finished examining neighbour ID: " + i + " and exiting loop");
+					System.out.println("-----------------------------------------------------------------------");
+					break;
 				} else {
 
 					//System.out.println("There were no available colours so finished examining neighbour ID: " + i);

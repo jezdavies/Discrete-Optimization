@@ -54,9 +54,9 @@ public class Solver {
 		if(fileName == null){
 			//return;
 			//TODO remove hardcoded file to be used if no parameter passed
-			fileName = "./data/gc_1000_5";
+//			fileName = "./data/gc_1000_5";
 //			fileName = "./data/gc_500_1";
-//			fileName = "./data/gc_50_3";
+			fileName = "./data/gc_50_3";
 //			fileName = "./data/gc_20_1";
 //			fileName = "./data/gc_4_1";
 		}

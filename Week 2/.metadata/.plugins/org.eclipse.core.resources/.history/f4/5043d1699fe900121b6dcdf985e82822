@@ -54,9 +54,9 @@ public class Solver {
 		if(fileName == null){
 			//return;
 			//TODO remove hardcoded file to be used if no parameter passed
-			fileName = "./data/gc_1000_5";
+//			fileName = "./data/gc_1000_5";
 //			fileName = "./data/gc_500_1";
-//			fileName = "./data/gc_50_3";
+			fileName = "./data/gc_50_3";
 //			fileName = "./data/gc_20_1";
 //			fileName = "./data/gc_4_1";
 		}
@@ -144,9 +144,9 @@ public class Solver {
 		// prepare the solution in the specified output format
 		System.out.println(graph.getColourCount() +" 0");
 
-		/*for(Vertice v : graph.getVertices()){
+		for(Vertice v : graph.getVertices()){
 			System.out.println("VerticeID: " + v.getId() + ", Colour: " + v.getColour());
-		}   */
+		}   
 		
 		for(Vertice v : graph.getVertices()){
 			System.out.print(v.getColour() + " ");

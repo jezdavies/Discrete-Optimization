@@ -210,12 +210,9 @@ public class Graph {
 					{
 						//we can change the colour so jump out of the loop as we've achieved our goal
 						//System.out.println("We found a free colour: " + availableColours.get(0) + " and free up colour: " + oldColour + 
-								//"so Finished examining neighbour ID: " + i + " and exiting loop");
+								"so Finished examining neighbour ID: " + i + " and exiting loop");
 						//System.out.println("-----------------------------------------------------------------------");
 						break;
-					} else {
-						//we can't change the colour of the node so reset the oldcolour variable to -1
-						oldColour = -1;
 					}
 					
 					
